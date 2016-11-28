@@ -1,3 +1,4 @@
+# coding: utf-8
 require 'xa/ubl/invoice'
 
 describe XA::UBL::Invoice do
@@ -57,7 +58,13 @@ describe XA::UBL::Invoice do
       end
     end
   end
-  
+
+  def with_expectations_match(expectations, k)
+    with_expectations(expectations) do |invoice, ex|
+      expect(invoice[k]).to eql(ex)
+    end
+  end
+
   it 'should read some simple fields from the content' do
     expectations = {
       ubl1: {
@@ -100,9 +107,7 @@ describe XA::UBL::Invoice do
       },
     }
 
-    with_expectations(expectations) do |invoice, ex|
-      expect(invoice[:period]).to eql(ex)
-    end    
+    with_expectations_match(expectations, :period)
   end
 
   it 'should read parties from the content' do
@@ -180,9 +185,39 @@ describe XA::UBL::Invoice do
       },
     }
 
-    with_expectations(expectations) do |invoice, ex|
-      expect(invoice[:parties]).to eql(ex)
-    end    
+    with_expectations_match(expectations, :parties)
+  end
+
+  it 'should read deliveries from the content' do
+    expectations = {
+      ubl3: {
+        date: "2016-01-12",
+        address: {
+          street: {
+            name: "Rue Metcalfe"
+          },
+          number: "2044",
+          zone: "H3A1X7",
+          city: "Montréal",
+          country_code: "CA"
+        }
+      },
+      ubl4: {
+        date: "2009-12-15",
+        address: {
+          street: {
+            name: "Deliverystreet",
+            unit: "Side door"
+          },
+          number: "12",
+          zone: "523427",
+          city: "DeliveryCity",
+          country_code: "BE"
+        }
+      },
+    }
+
+    with_expectations_match(expectations, :delivery)
   end
 end
 
