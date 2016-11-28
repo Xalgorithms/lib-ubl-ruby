@@ -26,14 +26,12 @@ describe XA::UBL::Invoice do
     include XA::UBL::Invoice
   end
 
-  let(:parser) do
-    Parser.new
-  end
-  
   let(:content) do
     {
       ubl1: IO.read('spec/files/1.xml'),
       ubl2: IO.read('spec/files/2.xml'),
+      ubl3: IO.read('spec/files/3.xml'),
+      ubl4: IO.read('spec/files/4.xml'),
     }
   end
   
@@ -51,6 +49,15 @@ describe XA::UBL::Invoice do
     end
   end
 
+  def with_expectations(expectations)
+    expectations.each do |k, ex|
+      parser = Parser.new
+      parser.parse(content[k]) do |invoice|
+        yield(invoice, ex)
+      end
+    end
+  end
+  
   it 'should read some simple fields from the content' do
     expectations = {
       ubl1: {
@@ -63,15 +70,119 @@ describe XA::UBL::Invoice do
         issued: '2016-10-25',
         currency: 'USD',
       },
+      ubl3: {
+        id: 'FENDER-111111',
+        issued: '2016-01-02',
+        currency: 'USD',
+      },
+      ubl4: {
+        id: 'TOSL108',
+        issued: '2009-12-15',
+        currency: 'EUR',
+      },
     }
 
-    expectations.each do |k, ex|
-      parser.parse(content[k]) do |invoice|
-        ex.keys.each do |ex_k|
-          expect(invoice[ex_k]).to eql(ex[ex_k])
-        end
+    with_expectations(expectations) do |invoice, ex|
+      ex.keys.each do |k|
+        expect(invoice[k]).to eql(ex[k])
       end
     end
+  end
+
+  it 'should read periods from the content' do
+    expectations = {
+      ubl1: nil,
+      ubl2: nil,
+      ubl3: nil,
+      ubl4: {
+        starts: '2009-11-01',
+        ends: '2009-11-30',
+      },
+    }
+
+    with_expectations(expectations) do |invoice, ex|
+      expect(invoice[:period]).to eql(ex)
+    end    
+  end
+
+  it 'should read parties from the content' do
+    expectations = {
+      ubl1: {
+        supplier: {
+          id: "5a8bb5df-89fb-4360-8f7e-f711ec846204",
+          name: "Xalgorithms Foundation",
+          address: {
+            street: {
+              name: "Hines Road",
+              unit: "Kanata"
+            },
+            number: "50",
+            zone: "K2K 2M5",
+            city: "Ottawa",
+            country_code: "CA"
+          },
+          person: {
+            name: {
+              first: "Joseph",
+              family: "Potvin"
+            }
+          }
+        },
+        customer: {
+          id: "9a928370-7ad6-47fb-972a-78888c7be302",
+          name: "strangeware",
+          address: {
+            street: {
+              name:
+                "Jardin Pvt"
+            },
+            number: "49",
+            zone: "K1K2V8",
+            city: "Ottawa",
+            country_code: "CA"
+          }
+        }
+      },
+      ubl2: {
+        supplier: {
+          id: "5a8bb5df-89fb-4360-8f7e-f711ec846204",
+          name: "Xalgorithms Foundation",
+          address: {
+            street: {
+              name: "Hines Road",
+              unit: "Kanata"
+            },
+            number: "50",
+            zone: "K2K 2M5",
+            city: "Ottawa",
+            country_code: "CA"
+          },
+          person: {
+            name: {
+              first: "Joseph",
+              family: "Potvin"
+            }
+          }
+        },
+        customer: {
+          id: "9a928370-7ad6-47fb-972a-78888c7be302",
+          name: "strangeware",
+          address: {
+            street: {
+              name: "Jardin Pvt"
+            },
+            number: "49",
+            zone: "K1K2V8",
+            city: "Ottawa",
+            country_code: "CA"
+          }
+        }
+      },
+    }
+
+    with_expectations(expectations) do |invoice, ex|
+      expect(invoice[:parties]).to eql(ex)
+    end    
   end
 end
 

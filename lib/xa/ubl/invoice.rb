@@ -20,7 +20,8 @@ module XA
           }
           nses = n.namespaces.invert
           @nses = @namespace_urns.keys.inject({}) do |o, k|
-            o.merge(k => nses[@namespace_urns[k]].split(':').last)
+            ns_k = @namespace_urns[k]
+            nses[ns_k] ? o.merge(k => nses[ns_k].split(':').last) : o
           end
         end
         
