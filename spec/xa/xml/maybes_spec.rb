@@ -27,7 +27,7 @@ describe XA::XML::Maybes do
     end
   end
 
-  it 'should locate one child nodenad yield the text' do
+  it 'should locate one child node and yield the text' do
     expectations = {
       'ab' => 'A-AB0',
       'ac' => 'A-AC',
@@ -49,6 +49,76 @@ describe XA::XML::Maybes do
     end
   end
 
+  it 'should locate one child node and yield the text converted to number' do
+    expectations = {
+      'ad' => 1,
+      'ae' => 1234,
+    }
+    load_test_file(0) do |root_el|
+      expectations.each do |xp, i|
+        n = maybe_find_one_int(root_el, xp)
+
+        expect(n).to eql(i)
+        sq = n * n
+
+        rv = maybe_find_one_int(root_el, xp) do |ac|
+          expect(ac).to eql(n)
+          ac * ac
+        end
+
+        expect(rv).to eql(sq)
+      end
+    end
+  end
+
+  def convert_el(el)
+    # convert to something which supplies :any?
+    [el[:id]]
+  end
+
+  it 'should locate one child node and yield the conversion according to the function' do
+    expectations = {
+      'aa' => 'a-aa0',
+      'ac' => 'a-ac',
+    }
+    load_test_file(0) do |root_el|
+      expectations.each do |xp, id|
+        ac_id = maybe_find_one_convert(:convert_el, root_el, xp)
+
+        expect(ac_id).to eql([id])
+
+        maybe_find_one_convert(:convert_el, root_el, xp) do |ac_id|
+          expect(ac_id).to eql([id])
+        end
+      end
+    end
+  end
+
+  def convert_empty(el)
+    []
+  end
+  
+  it 'should locate one child node and not yield the conversion if the conversion is empty' do
+    expectations = {
+      'aa' => 'a-aa0',
+      'ac' => 'a-ac',
+    }
+    load_test_file(0) do |root_el|
+      expectations.each do |xp, id|
+        ac_id = maybe_find_one_convert(:convert_empty, root_el, xp)
+
+        expect(ac_id).to eql([])
+
+        called = false
+        maybe_find_one_convert(:convert_empty, root_el, xp) do |ac_id|
+          called = true
+        end
+
+        expect(called).to eql(false)
+      end
+    end
+  end
+  
   it 'should locate one child node with attributes' do
     expectations = {
       'aa' => { 'x' => 'aa-x', 'y' => 'aa-y' },
