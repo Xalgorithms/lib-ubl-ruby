@@ -240,14 +240,35 @@ module XA
 
       def make_line(el)
         {}.tap do |o|
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:ID") do |text|
+            o[:id] = text
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:LineExtensionAmount", ['currencyID']) do |text, vals|
+            o[:price] = { value: text.to_f }.tap do |o|
+              currency = vals.fetch('currencyID', nil)
+              o[:currency] = currency if currency
+            end
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:InvoicedQuantity", ['unitCode']) do |text, vals|
+            o[:quantity] = { value: text.to_i }.tap do |o|
+              code = vals.fetch('unitCode', nil)
+              o[:code] = code if code
+            end
+          end
           maybe_find_one_text(el, "#{ns(el, :cbc)}:Note") do |text|
             o[:note] = text
           end
+
           maybe_find_one_convert(:make_line_item, el, "#{ns(el, :cac)}:Item") do |item|
             o[:item] = item
           end
-          maybe_find_one_convert(:make_line_price, el, "#{ns(el, :cac)}:Price") do |price|
-            o[:price] = price
+
+          maybe_find_one_convert(:make_line_pricing, el, "#{ns(el, :cac)}:Price") do |pricing|
+            o[:pricing] = pricing
+          end
+
+          maybe_find_one_text(el, "#{ns(el, :cac)}:Price/#{ns(el, :cbc)}:OrderableUnitFactorRate") do |text|
+            o[:orderable_factor] = text.to_f
           end
         end
       end
@@ -341,17 +362,19 @@ module XA
         end
       end
 
-      def make_line_price(el)
+      def make_line_pricing(el)
         {}.tap do |o|
           maybe_find_one_text(el, "#{ns(el, :cbc)}:PriceAmount", ['currencyID']) do |text, vals|
-            currency = vals.fetch('currencyID', nil)
-            o[:currency] = currency if currency
-            o[:amount] = text.to_f
+            o[:price] = { value: text.to_f }.tap do |o|
+              currency = vals.fetch('currencyID', nil)
+              o[:currency] = currency if currency
+            end
           end
           maybe_find_one_text(el, "#{ns(el, :cbc)}:BaseQuantity", ['unitCode']) do |text, vals|
-            code = vals.fetch('unitCode', nil)
-            o[:code] = code if code
-            o[:quantity] = text.to_i
+            o[:quantity] = { value: text.to_i }.tap do |o|
+              code = vals.fetch('unitCode', nil)
+              o[:code] = code if code
+            end
           end
         end
       end

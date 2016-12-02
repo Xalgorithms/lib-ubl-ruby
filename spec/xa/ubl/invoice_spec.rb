@@ -219,5 +219,55 @@ describe XA::UBL::Invoice do
 
     with_expectations_match(expectations, :delivery)
   end
+
+  it 'should read item lines from the content' do
+    expectations = {
+      ubl2: [
+        {
+          id: '1',
+          price: { value: 500.0, currency: 'CAD' },
+          quantity: { value: 100, code: 'EA' },
+          item: {
+            description: { text: "Services - test description field" },
+            name: "Services - test description field",
+            ids: {
+              seller: { value: "1234", scheme: "GTIN", agency: "9" }
+            },
+          },
+          pricing: {
+            quantity: { value: 1, code: 'EA' },
+            price: { value: 5.0, currency: 'CAD' },
+          },
+          orderable_factor: 1.0,
+        },
+      ],
+      ubl3: [
+        {
+          id: '1',
+          quantity: { value: 1, code: 'C62' },
+          item: {
+            description: {
+              text: "Features include a maple neck with vintage-tint gloss finish, 9.5”-radius rosewood fingerboard with 22 medium jumbo frets and parchment dot inlays, tortoiseshell (Three-Color Sunburst and Olympic White models) and white-black-white pickguards (Candy Apple Red and Surf Green models), Jaguar single-coil pickups, circuit selector and tone circuit switches, pickup on/off switches, skirted black control knobs (lead circuit) and black disc knobs (rhythm circuit), vintage-style bridge and non-locking floating vibrato with vintage-style tremolo arm, vintage-style chrome tuners and chrome hardware.",
+              language: "EN"
+            },
+            name: "VINTAGE MODIFIED JAGUAR",
+            ids: {
+              seller: { value: "0302000500" },
+              standard: { value: "111111", scheme: "GTIN", agency: "9" },
+            },
+            classifications: [
+              { value: "60131303", agency: "113", id: "UNSPSC" },
+            ],
+          },
+          pricing: {
+            price: { value: 600.0, currency: 'USD' },
+            quantity: { value: 1, code: 'C62' },
+          },
+        },
+      ],
+    }
+
+    with_expectations_match(expectations, :lines)
+  end
 end
 
