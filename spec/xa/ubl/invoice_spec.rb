@@ -235,10 +235,33 @@ describe XA::UBL::Invoice do
             },
           },
           pricing: {
-            quantity: { value: 1, code: 'EA' },
             price: { value: 5.0, currency: 'CAD' },
+            quantity: { value: 1, code: 'EA' },
           },
           orderable_factor: 1.0,
+          tax: {
+            total: { value: 65.0, currency: 'CAD' },
+            components: [
+              {
+                amount: { value: 65.0, currency: 'CAD' },
+                taxable: { value: 500.0, currency: 'CAD' },
+                categories: [
+                  {
+                    id: { value: 'S', agency_id: '6', scheme_id: 'UN/ECE 5305', version_id: 'D08B', },
+                    percent: 13.0,
+                    scheme: {
+                      id: { value: 'AAG', agency_id: '6', scheme_id: 'UN/ECE 5153 Subset', version_id: 'D08B', },
+                      name: 'CA ON HST 13%',
+                      jurisdiction: {
+                        format: { agency_id: '6', id: 'UN/ECE 3477', version_id: 'D08B', value: '5' },
+                        district: 'ON',
+                      },
+                    },
+                  },
+                ],
+              },
+            ],
+          },
         },
       ],
       ubl3: [

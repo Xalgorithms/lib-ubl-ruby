@@ -270,6 +270,10 @@ module XA
           maybe_find_one_text(el, "#{ns(el, :cac)}:Price/#{ns(el, :cbc)}:OrderableUnitFactorRate") do |text|
             o[:orderable_factor] = text.to_f
           end
+
+          maybe_find_one_convert(:make_line_tax, el, "#{ns(el, :cac)}:TaxTotal") do |tax|
+            o[:tax] = tax
+          end
         end
       end
 
@@ -375,6 +379,93 @@ module XA
               code = vals.fetch('unitCode', nil)
               o[:code] = code if code
             end
+          end
+        end
+      end
+
+      def make_line_tax(el)
+        {}.tap do |o|
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:TaxAmount", ['currencyID']) do |text, vals|
+            o[:total] = { value: text.to_f }.tap do |o|
+              currency = vals.fetch('currencyID', nil)
+              o[:currency] = currency if currency
+            end
+          end
+          o[:components] = maybe_find_many_convert(:make_tax_component, el, "#{ns(el, :cac)}:TaxSubtotal")
+        end
+      end
+
+      def make_tax_component(el)
+        {}.tap do |o|
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:TaxAmount", ['currencyID']) do |text, vals|
+            o[:amount] = { value: text.to_f }.tap do |o|
+              currency = vals.fetch('currencyID', nil)
+              o[:currency] = currency if currency
+            end
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:TaxableAmount", ['currencyID']) do |text, vals|
+            o[:taxable] = { value: text.to_f }.tap do |o|
+              currency = vals.fetch('currencyID', nil)
+              o[:currency] = currency if currency
+            end
+          end
+          o[:categories] = maybe_find_many_convert(:make_tax_category, el, "#{ns(el, :cac)}:TaxCategory")
+        end
+      end
+
+      def make_tax_scheme_id(text, vals)
+        { value: text }.tap do |o|
+          agency_id = vals.fetch('schemeAgencyID')
+          scheme_id = vals.fetch('schemeID')
+          version_id = vals.fetch('schemeVersionID')
+          o[:agency_id] = agency_id if agency_id
+          o[:scheme_id] = scheme_id if scheme_id
+          o[:version_id] = version_id if version_id
+        end
+      end
+      
+      def make_tax_category(el)
+        {}.tap do |o|
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:ID", ['schemeAgencyID', 'schemeID', 'schemeVersionID']) do |text, vals|
+            o[:id] = make_tax_scheme_id(text, vals)
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:Percent") do |text|
+            o[:percent] = text.to_f
+          end
+          maybe_find_one_convert(:make_tax_category_scheme, el, "#{ns(el, :cac)}:TaxScheme") do |s|
+            o[:scheme] = s
+          end
+        end
+      end
+
+      def make_tax_category_scheme(el)
+        {}.tap do |o|
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:ID", ['schemeAgencyID', 'schemeID', 'schemeVersionID']) do |text, vals|
+            o[:id] = make_tax_scheme_id(text, vals)
+          end          
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:Name") do |text|
+            o[:name] = text
+          end
+          maybe_find_one_convert(:make_tax_jurisdiction, el, "#{ns(el, :cac)}:JurisdictionRegionAddress") do |juri|
+            o[:jurisdiction] = juri
+          end
+        end
+      end
+
+      def make_tax_jurisdiction(el)
+        {}.tap do |o|
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:AddressFormatCode", ['listAgencyID', 'listID', 'listVersionID']) do |text, vals|
+            o[:format] = { value: text }.tap do |o|
+              agency_id = vals.fetch('listAgencyID', nil)
+              id = vals.fetch('listID', nil)
+              version_id = vals.fetch('listVersionID', nil)
+              o[:agency_id] = agency_id if agency_id
+              o[:id] = id if id
+              o[:version_id] = version_id if version_id
+            end
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:District") do |text|
+            o[:district] = text
           end
         end
       end
