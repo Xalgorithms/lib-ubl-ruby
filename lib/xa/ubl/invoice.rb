@@ -126,6 +126,10 @@ module XA
           maybe_find_many_convert(:make_line, el, "#{ns(el, :cac)}:InvoiceLine") do |lines|
             o[:lines] = lines
           end
+
+          maybe_find_one_convert(:make_totals, el, "#{ns(el, :cac)}:LegalMonetaryTotal") do |totals|
+            o[:totals] = totals
+          end
         end
       end
       
@@ -277,6 +281,32 @@ module XA
         end
       end
 
+      def make_currency(el)
+        cid = el['currencyID']
+        { value: el.text.to_f }.tap do |o|
+          o[:currency] = cid if cid
+        end
+      end
+      
+      def make_totals(el)
+        {}.tap do |o|
+          {
+            total: { ns: :cbc, name: 'LineExtensionAmount' },
+            tax_exclusive: { ns: :cbc, name: 'TaxExclusiveAmount' },
+            tax_inclusive: { ns: :cbc, name: 'TaxInclusiveAmount' },
+            allowance: { ns: :cbc, name: 'AllowanceTotalAmount' },
+            charge: { ns: :cbc, name: 'ChargeTotalAmount' },
+            prepaid: { ns: :cbc, name: 'PrepaidAmount' },
+            rounding: { ns: :cbc, name: 'PayableRoundingAmount' },
+            payable: { ns: :cbc, name: 'PayableAmount' }
+          }.each do |k, v|
+            maybe_find_one_convert(:make_currency, el, "#{ns(el, v[:ns])}:#{v[:name]}") do |cur|
+              o[k] = cur
+            end
+          end
+        end
+      end
+      
       def maybe_find_line_item_ids(el, &bl)
         @line_item_ids ||= {
           seller:   "#{ns(el, :cac)}:SellersItemIdentification",

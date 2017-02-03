@@ -292,5 +292,47 @@ describe XA::UBL::Invoice do
 
     with_expectations_match(expectations, :lines)
   end
+
+  it 'should read totals from the content' do
+    expectations = {
+      ubl1: {
+        totals: {
+          total: { value: 3000.0, currency: 'CAD' },
+          tax_exclusive: { value: 390.0, currency: 'CAD' },
+          tax_inclusive: { value: 3390.0, currency: 'CAD' },
+          payable: { value: 3390.0, currency: 'CAD' },
+        },
+      },
+      ubl2: {
+        totals: {
+          total: { value: 500.0, currency: 'CAD' },
+          tax_exclusive: { value: 65.0, currency: 'CAD' },
+          tax_inclusive: { value: 565.0, currency: 'CAD' },
+          payable: { value: 565.0, currency: 'CAD' },
+        },
+      },
+      ubl3: {
+        totals: nil,
+      },
+      ubl4: {
+        totals: {
+          total: { value: 1436.5, currency: 'EUR' },
+          tax_exclusive: { value: 1436.5, currency: 'EUR' },
+          tax_inclusive: { value: 1729.0, currency: 'EUR' },
+          allowance: { value: 100.0, currency: 'EUR' },
+          charge: { value: 100.0, currency: 'EUR' },
+          prepaid: { value: 1000.0, currency: 'EUR' },
+          rounding: { value: 0.3, currency: 'EUR' },
+          payable: { value: 729.0, currency: 'EUR' },
+        },
+      },
+    }
+
+    with_expectations(expectations) do |invoice, ex|
+      ex.keys.each do |k|
+        expect(invoice[k]).to eql(ex[k])
+      end
+    end
+  end
 end
 
