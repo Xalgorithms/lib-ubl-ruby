@@ -247,11 +247,8 @@ module XA
           maybe_find_one_text(el, "#{ns(el, :cbc)}:ID") do |text|
             o[:id] = text
           end
-          maybe_find_one_text(el, "#{ns(el, :cbc)}:LineExtensionAmount", ['currencyID']) do |text, vals|
-            o[:price] = { value: text.to_f }.tap do |o|
-              currency = vals.fetch('currencyID', nil)
-              o[:currency] = currency if currency
-            end
+          maybe_find_one_convert(:make_price_with_currency, el, "#{ns(el, :cbc)}:LineExtensionAmount") do |c|
+            o[:price] = c
           end
           maybe_find_one_text(el, "#{ns(el, :cbc)}:InvoicedQuantity", ['unitCode']) do |text, vals|
             o[:quantity] = { value: text.to_i }.tap do |o|
@@ -281,7 +278,7 @@ module XA
         end
       end
 
-      def make_currency(el)
+      def make_price_with_currency(el)
         cid = el['currencyID']
         { value: el.text.to_f }.tap do |o|
           o[:currency] = cid if cid
@@ -300,7 +297,7 @@ module XA
             rounding: { ns: :cbc, name: 'PayableRoundingAmount' },
             payable: { ns: :cbc, name: 'PayableAmount' }
           }.each do |k, v|
-            maybe_find_one_convert(:make_currency, el, "#{ns(el, v[:ns])}:#{v[:name]}") do |cur|
+            maybe_find_one_convert(:make_price_with_currency, el, "#{ns(el, v[:ns])}:#{v[:name]}") do |cur|
               o[k] = cur
             end
           end
@@ -398,11 +395,8 @@ module XA
 
       def make_line_pricing(el)
         {}.tap do |o|
-          maybe_find_one_text(el, "#{ns(el, :cbc)}:PriceAmount", ['currencyID']) do |text, vals|
-            o[:price] = { value: text.to_f }.tap do |o|
-              currency = vals.fetch('currencyID', nil)
-              o[:currency] = currency if currency
-            end
+          maybe_find_one_convert(:make_price_with_currency, el, "#{ns(el, :cbc)}:PriceAmount") do |c|
+            o[:price] = c
           end
           maybe_find_one_text(el, "#{ns(el, :cbc)}:BaseQuantity", ['unitCode']) do |text, vals|
             o[:quantity] = { value: text.to_i }.tap do |o|
@@ -415,11 +409,8 @@ module XA
 
       def make_line_tax(el)
         {}.tap do |o|
-          maybe_find_one_text(el, "#{ns(el, :cbc)}:TaxAmount", ['currencyID']) do |text, vals|
-            o[:total] = { value: text.to_f }.tap do |o|
-              currency = vals.fetch('currencyID', nil)
-              o[:currency] = currency if currency
-            end
+          maybe_find_one_convert(:make_price_with_currency, el, "#{ns(el, :cbc)}:TaxAmount") do |c|
+            o[:total] = c
           end
           o[:components] = maybe_find_many_convert(:make_tax_component, el, "#{ns(el, :cac)}:TaxSubtotal")
         end
@@ -427,17 +418,11 @@ module XA
 
       def make_tax_component(el)
         {}.tap do |o|
-          maybe_find_one_text(el, "#{ns(el, :cbc)}:TaxAmount", ['currencyID']) do |text, vals|
-            o[:amount] = { value: text.to_f }.tap do |o|
-              currency = vals.fetch('currencyID', nil)
-              o[:currency] = currency if currency
-            end
+          maybe_find_one_convert(:make_price_with_currency, el, "#{ns(el, :cbc)}:TaxAmount") do |c|
+            o[:amount] = c
           end
-          maybe_find_one_text(el, "#{ns(el, :cbc)}:TaxableAmount", ['currencyID']) do |text, vals|
-            o[:taxable] = { value: text.to_f }.tap do |o|
-              currency = vals.fetch('currencyID', nil)
-              o[:currency] = currency if currency
-            end
+          maybe_find_one_convert(:make_price_with_currency, el, "#{ns(el, :cbc)}:TaxableAmount") do |c|
+            o[:taxable] = c
           end
           o[:categories] = maybe_find_many_convert(:make_tax_category, el, "#{ns(el, :cac)}:TaxCategory")
         end
