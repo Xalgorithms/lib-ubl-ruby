@@ -27,6 +27,11 @@ describe XA::UBL::Invoice do
     include XA::UBL::Invoice
   end
 
+  it 'should quietly fail to parse non-UBL' do
+    rv = Parser.new.parse(IO.read('spec/files/0.xml'))
+    expect(rv).to be_nil
+  end
+  
   let(:content) do
     {
       ubl1: IO.read('spec/files/1.xml'),

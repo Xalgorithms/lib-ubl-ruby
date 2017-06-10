@@ -7,9 +7,16 @@ module XA
 
       def load_and_parse(b, sym_root_xp, sym_make, &bl)
         load(b) do |doc|
-          maybe_find_one(doc, send(sym_root_xp, doc)) do |n|
-            rv = send(sym_make, n)
-            bl.call(rv) if rv && rv.any? && bl
+          begin
+            maybe_find_one(doc, send(sym_root_xp, doc)) do |n|
+              rv = send(sym_make, n)
+              bl.call(rv) if rv && rv.any? && bl
+
+              rv
+            end
+          rescue Nokogiri::XML::XPath::SyntaxError
+            # nothing
+            nil
           end
         end
       end
