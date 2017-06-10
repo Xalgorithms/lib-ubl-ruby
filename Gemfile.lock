@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    xa-ubl (0.0.1)
+    xa-ubl (0.0.2)
       nokogiri
 
 GEM
@@ -18,7 +18,7 @@ GEM
     i18n (0.7.0)
     method_source (0.8.2)
     mini_portile2 (2.1.0)
-    nokogiri (1.6.8.1)
+    nokogiri (1.7.2)
       mini_portile2 (~> 2.1.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -52,7 +52,7 @@ DEPENDENCIES
   xa-ubl!
 
 RUBY VERSION
-   ruby 2.3.1p112
+   ruby 2.3.3p222
 
 BUNDLED WITH
-   1.13.6
+   1.14.6
