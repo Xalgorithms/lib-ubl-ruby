@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--2017-05-14 11:30z GasTaxExample input values-->
+<inns:Invoice 
+xmlns:inns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+xmlns:cans="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+xmlns:cbns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbns:ID>1234</cbns:ID>
+  <cbns:IssueDate>2017-05-12</cbns:IssueDate>
+  <cans:AccountingSupplierParty>
+    <cans:Party>
+      <cans:PartyIdentification>
+        <cbns:ID schemeName="PBN">887603799PG0001</cbns:ID>
+      </cans:PartyIdentification>
+      <cans:PartyName>
+        <cbns:Name>l'Essence Chez Bob</cbns:Name>
+      </cans:PartyName>
+      <cans:PhysicalLocation>
+        <cbns:ID schemeURI="http://openlocationcode.org">87Q6C47F+J7</cbns:ID>
+      </cans:PhysicalLocation>
+    </cans:Party>
+  </cans:AccountingSupplierParty>
+  <cans:AccountingCustomerParty>
+    <cans:Party>
+      <cans:PartyIdentification>
+        <cbns:ID>Cash</cbns:ID>
+      </cans:PartyIdentification>
+    </cans:Party>
+  </cans:AccountingCustomerParty>
+  <cans:LegalMonetaryTotal>
+    <cbns:PayableAmount currencyID="CAD">10.00</cbns:PayableAmount>
+  </cans:LegalMonetaryTotal>
+  <cans:InvoiceLine>
+    <cbns:ID>1</cbns:ID>
+    <cbns:InvoicedQuantity unitCode="LTR">10</cbns:InvoicedQuantity>
+    <cbns:LineExtensionAmount currencyID="CAD">10.00</cbns:LineExtensionAmount>
+    <cans:Item>
+      <cbns:Description>Gas</cbns:Description>
+      <cans:CommodityClassification>
+        <cbns:ItemClassificationCode listName="UNSPSC"
+                                         >506505</cbns:ItemClassificationCode>
+      </cans:CommodityClassification>
+    </cans:Item>
+    <cans:Price>
+      <cbns:PriceAmount currencyID="CAD">1.00</cbns:PriceAmount>
+      <cbns:BaseQuantity unitCode="LTR">1</cbns:BaseQuantity>
+    </cans:Price>
+    <cans:ItemPriceExtension>
+      <cbns:Amount currencyID="CAD">10.00</cbns:Amount>
+    </cans:ItemPriceExtension>
+  </cans:InvoiceLine>
+</inns:Invoice>

@@ -38,6 +38,7 @@ describe XA::UBL::Invoice do
       ubl2: IO.read('spec/files/2.xml'),
       ubl3: IO.read('spec/files/3.xml'),
       ubl4: IO.read('spec/files/4.xml'),
+      ubl5: IO.read('spec/files/gas_tax_example.xml'),
     }
   end
   
@@ -119,7 +120,12 @@ describe XA::UBL::Invoice do
     expectations = {
       ubl1: {
         supplier: {
-          id: "5a8bb5df-89fb-4360-8f7e-f711ec846204",
+          id: {
+            scheme: {
+              id: 'TS:ID',
+            },
+            value: "5a8bb5df-89fb-4360-8f7e-f711ec846204"
+          },
           name: "Xalgorithms Foundation",
           address: {
             street: {
@@ -139,7 +145,12 @@ describe XA::UBL::Invoice do
           }
         },
         customer: {
-          id: "9a928370-7ad6-47fb-972a-78888c7be302",
+          id: {
+            scheme: {
+              id: 'TS:ID',
+            },
+            value: "9a928370-7ad6-47fb-972a-78888c7be302"
+          },
           name: "strangeware",
           address: {
             street: {
@@ -155,7 +166,12 @@ describe XA::UBL::Invoice do
       },
       ubl2: {
         supplier: {
-          id: "5a8bb5df-89fb-4360-8f7e-f711ec846204",
+          id: {
+            scheme: {
+              id: 'TS:ID',
+            },
+            value: "5a8bb5df-89fb-4360-8f7e-f711ec846204"
+          },
           name: "Xalgorithms Foundation",
           address: {
             street: {
@@ -175,7 +191,12 @@ describe XA::UBL::Invoice do
           }
         },
         customer: {
-          id: "9a928370-7ad6-47fb-972a-78888c7be302",
+          id: {
+            scheme: {
+              id: 'TS:ID',
+            },
+            value: "9a928370-7ad6-47fb-972a-78888c7be302"
+          },
           name: "strangeware",
           address: {
             street: {
@@ -187,6 +208,30 @@ describe XA::UBL::Invoice do
             country_code: "CA"
           }
         }
+      },
+      ubl5: {
+        supplier: {
+          id: {
+            scheme: {
+              name: 'PBN',
+            },
+            value: '887603799PG0001',
+          },
+          location: {
+            id: {
+              scheme: {
+                uri: 'http://openlocationcode.org',
+              },
+              value: '87Q6C47F+J7',
+            },
+          },
+          name: "l'Essence Chez Bob",
+        },
+        customer: {
+          id: {
+            value: "Cash"
+          }
+        },
       },
     }
 

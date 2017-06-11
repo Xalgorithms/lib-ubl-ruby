@@ -132,12 +132,43 @@ module XA
           end
         end
       end
+
+      def maybe_find_scheme_id(el, xp, &bl)
+        mapping = {
+          id: 'schemeID',
+          name: 'schemeName',
+          uri: 'schemeURI',
+        }
+        
+        maybe_find_one_text(el, xp, mapping.values) do |text, attrs|
+          scheme = mapping.inject({}) do |o, (k, ak)|
+            av = attrs.fetch(ak, nil)
+            av ? o.merge(k => av) : o
+          end
+          id = { value: text }.tap do |o|
+            o[:scheme] = scheme unless scheme.empty?
+          end
+          
+          bl.call(id) if bl
+        end
+      end
+
+      def make_location(el)
+        rv = nil
+        maybe_find_scheme_id(el, "#{ns(el, :cbc)}:ID") do |id|
+          rv = { id: id }
+        end
+        rv
+      end
       
       def make_party(party_el)
         # ignoring: cbc:EndpointID, cbc:ID
         {}.tap do |o|
-          maybe_find_one_text(party_el, "#{ns(party_el, :cac)}:PartyIdentification/#{ns(party_el, :cbc)}:ID") do |text|
-            o[:id] = text
+          maybe_find_scheme_id(party_el, "#{ns(party_el, :cac)}:PartyIdentification/#{ns(party_el, :cbc)}:ID") do |id|
+            o[:id] = id
+          end
+          maybe_find_one_convert(:make_location, party_el, "#{ns(party_el, :cac)}:PhysicalLocation") do |loc|
+            o[:location] = loc
           end
           maybe_find_one_text(party_el, "#{ns(party_el, :cac)}:PartyName/#{ns(party_el, :cbc)}:Name") do |text|
             o[:name] = text

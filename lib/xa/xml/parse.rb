@@ -14,9 +14,8 @@ module XA
 
               rv
             end
-          rescue Nokogiri::XML::XPath::SyntaxError
+          rescue Nokogiri::XML::XPath::SyntaxError => e
             # nothing
-            nil
           end
         end
       end
