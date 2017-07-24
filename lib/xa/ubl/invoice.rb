@@ -103,6 +103,12 @@ module XA
           maybe_find_one_text(el, "#{ns(el, :cbc)}:ID") do |text|
             o[:id] = text
           end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:UBLVersionID") do |text|
+            o[:version_id] = text
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:CustomizationID") do |text|
+            o[:customization_id] = text
+          end
           maybe_find_one_text(el, "#{ns(el, :cbc)}:IssueDate") do |text|
             o[:issued] = text
           end

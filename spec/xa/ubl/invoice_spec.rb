@@ -75,21 +75,27 @@ describe XA::UBL::Invoice do
     expectations = {
       ubl1: {
         id: '00012b_EA_TEST',
+        version_id: '2.0',
+        customization_id: 'urn:tradeshift.com:ubl-2.0-customizations:2010-06',
         issued: '2016-11-15',
         currency: 'CAD',
       },
       ubl2: {
         id: '00009',
+        version_id: '2.0',
+        customization_id: 'urn:tradeshift.com:ubl-2.0-customizations:2010-06',
         issued: '2016-10-25',
         currency: 'USD',
       },
       ubl3: {
         id: 'FENDER-111111',
+        version_id: '2.1',
         issued: '2016-01-02',
         currency: 'USD',
       },
       ubl4: {
         id: 'TOSL108',
+        version_id: '2.1',
         issued: '2009-12-15',
         currency: 'EUR',
       },
