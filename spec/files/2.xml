@@ -59,6 +59,14 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
       <cbc:FirstName>Joseph</cbc:FirstName>
       <cbc:FamilyName>Potvin</cbc:FamilyName>
     </cac:Person>
+    <cac:PhysicalLocation>
+      <cac:Address>
+        <cac:Country>
+          <cbc:IdentificationCode listID="ISO 3116-1">AR</cbc:IdentificationCode>
+        </cac:Country>
+        <cbc:CountrySubentityCode listID="ISO 3116-2">AR-P</cbc:CountrySubentityCode>
+      </cac:Address>
+    </cac:PhysicalLocation>
   </cac:Party>
 </cac:AccountingSupplierParty>
 <cac:AccountingCustomerParty>
@@ -81,6 +89,14 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
       </cac:Country>
     </cac:PostalAddress>
     <cac:Contact></cac:Contact>
+    <cac:PhysicalLocation>
+      <cac:Address>
+        <cac:Country>
+          <cbc:IdentificationCode listID="ISO 3116-1">GR</cbc:IdentificationCode>
+        </cac:Country>
+        <cbc:CountrySubentityCode listID="ISO 3116-2">GR-P</cbc:CountrySubentityCode>
+      </cac:Address>
+    </cac:PhysicalLocation>
   </cac:Party>
 </cac:AccountingCustomerParty>
 <cac:Delivery>

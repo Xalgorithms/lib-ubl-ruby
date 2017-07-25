@@ -3,7 +3,7 @@ module XA
     module Maybes
       def maybe_find_one(pn, xp, attrs = {}, &bl)
         rv = pn.xpath(xp).first
-        attrs = attrs.inject({}) { |o, k| o.merge(k => rv[k]) } if rv
+        attrs = attrs.inject({}) { |o, k| rv[k] ? o.merge(k => rv[k]) : o } if rv
         rv = bl.call(rv, attrs) if rv && bl
         rv
       end

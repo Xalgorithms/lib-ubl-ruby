@@ -164,8 +164,57 @@ module XA
         maybe_find_scheme_id(el, "#{ns(el, :cbc)}:ID") do |id|
           rv = { id: id }
         end
+        maybe_find_one_convert(:make_location_address, el, "#{ns(el, :cac)}:Address") do |a|
+          rv = (rv || {}).merge({ address: a })
+        end
         rv
       end
+
+      # DEBT: https://www.pivotaltracker.com/story/show/149463055
+      # new version of make_address - should become standard for all
+      def make_location_address(el)
+        {}.tap do |o|
+          maybe_find_one_convert(:make_country, el, "#{ns(el, :cac)}:Country") do |c|
+            o[:country] = c
+          end
+          maybe_find_list_code(el, "#{ns(el, :cbc)}:CountrySubentityCode") do |c|
+            o[:subentity] = { code: c }
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:CountrySubentity") do |text|
+            o[:subentity] = o.fetch(:subentity, {}).merge(name: text)
+          end
+        end
+      end
+
+      def make_country(el)
+        {}.tap do |o|
+          maybe_find_list_code(el, "#{ns(el, :cbc)}:IdentificationCode") do |c|
+            o[:code] = c
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:Name") do |text|
+            o[:name] = text
+          end
+        end
+      end
+
+      def maybe_find_list_code(el, xp)
+        attrs = [
+          'listID', 'listName', 'listAgencyID', 'listAgencyName', 'listVersionID'
+        ]
+        maybe_find_one_text(el, xp, attrs) do |text, vals|
+          code = { value: text }.tap do |o|
+            o[:version] = vals['listVersionID'] if vals.key?('listVersionID')
+            o[:list] = { id: vals['listID'] } if vals.key?('listID')
+            o[:list] = o.fetch(:list, {}).merge({ name: vals['listName'] }) if vals.key?('listName')
+            o[:agency] = { id: vals['listAgencyID'] } if vals.key?('listAgencyID')
+            o[:agency] = o.fetch(:agency, {}).merge({ name: vals['listAgencyName'] }) if vals.key?('listName')
+          end
+
+          yield(code)
+        end
+      end
+      
+      # DEBT: https://www.pivotaltracker.com/story/show/149463055
       
       def make_party(party_el)
         # ignoring: cbc:EndpointID, cbc:ID
@@ -173,14 +222,14 @@ module XA
           maybe_find_scheme_id(party_el, "#{ns(party_el, :cac)}:PartyIdentification/#{ns(party_el, :cbc)}:ID") do |id|
             o[:id] = id
           end
-          maybe_find_one_convert(:make_location, party_el, "#{ns(party_el, :cac)}:PhysicalLocation") do |loc|
-            o[:location] = loc
-          end
           maybe_find_one_text(party_el, "#{ns(party_el, :cac)}:PartyName/#{ns(party_el, :cbc)}:Name") do |text|
             o[:name] = text
           end
           maybe_find_one_convert(:make_address, party_el, "#{ns(party_el, :cac)}:PostalAddress") do |a|
             o[:address] = a
+          end
+          maybe_find_one_convert(:make_location, party_el, "#{ns(party_el, :cac)}:PhysicalLocation") do |loc|
+            o[:location] = loc
           end
           maybe_find_one_convert(:make_legal, party_el, "#{ns(party_el, :cac)}:PartyLegalEntity") do |l|
             o[:legal] = l
@@ -467,9 +516,9 @@ module XA
 
       def make_tax_scheme_id(text, vals)
         { value: text }.tap do |o|
-          agency_id = vals.fetch('schemeAgencyID')
-          scheme_id = vals.fetch('schemeID')
-          version_id = vals.fetch('schemeVersionID')
+          agency_id = vals.fetch('schemeAgencyID', nil)
+          scheme_id = vals.fetch('schemeID', nil)
+          version_id = vals.fetch('schemeVersionID', nil)
           o[:agency_id] = agency_id if agency_id
           o[:scheme_id] = scheme_id if scheme_id
           o[:version_id] = version_id if version_id

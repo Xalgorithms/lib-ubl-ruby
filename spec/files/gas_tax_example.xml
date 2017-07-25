@@ -36,8 +36,7 @@ xmlns:cbns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
     <cans:Item>
       <cbns:Description>Gas</cbns:Description>
       <cans:CommodityClassification>
-        <cbns:ItemClassificationCode listName="UNSPSC"
-                                         >506505</cbns:ItemClassificationCode>
+        <cbns:ItemClassificationCode listName="UNSPSC">506505</cbns:ItemClassificationCode>
       </cans:CommodityClassification>
     </cans:Item>
     <cans:Price>

@@ -143,6 +143,28 @@ describe XA::UBL::Invoice do
             city: "Ottawa",
             country_code: "CA"
           },
+          location: {
+            address: {
+              country: {
+                code: {
+                  value: 'CA',
+                  version: '20010914',
+                  list: { id: 'ISO 3116-1', name: 'Country' },
+                  agency: { id: '6', name: 'United Nations Economic Commission for Europe' },
+                },
+                name: 'Canada',
+              },
+              subentity: {
+                code: {
+                  value: 'CA-QC',
+                  version: '20010914',
+                  list: { id: 'ISO 3116-2', name: 'Country Subentity' },
+                  agency: { id: '6', name: 'Another' },
+                },
+                name: 'Quebec',
+              },
+            }
+          },
           person: {
             name: {
               first: "Joseph",
@@ -152,10 +174,10 @@ describe XA::UBL::Invoice do
         },
         customer: {
           id: {
+            value: "9a928370-7ad6-47fb-972a-78888c7be302",
             scheme: {
               id: 'TS:ID',
-            },
-            value: "9a928370-7ad6-47fb-972a-78888c7be302"
+            }
           },
           name: "strangeware",
           address: {
@@ -167,7 +189,23 @@ describe XA::UBL::Invoice do
             zone: "K1K2V8",
             city: "Ottawa",
             country_code: "CA"
-          }
+          },
+          location: {
+            address: {
+              country: {
+                code: {
+                  value: 'CA',
+                  list: { id: 'ISO 3116-1' },
+                },
+              },
+              subentity: {
+                code: {
+                  value: 'CA-ON',
+                  list: { id: 'ISO 3116-2' },
+                },
+              },
+            }
+          },
         }
       },
       ubl2: {
@@ -194,7 +232,17 @@ describe XA::UBL::Invoice do
               first: "Joseph",
               family: "Potvin"
             }
-          }
+          },
+          location: {
+            address: {
+              country: {
+                code: { value: "AR", list: { id: "ISO 3116-1" } },
+              },
+              subentity: {
+                code: { value: "AR-P", list: { id: "ISO 3116-2" } },
+              },
+            },
+          },
         },
         customer: {
           id: {
@@ -212,7 +260,17 @@ describe XA::UBL::Invoice do
             zone: "K1K2V8",
             city: "Ottawa",
             country_code: "CA"
-          }
+          },
+          location: {
+            address: {
+              country: {
+                code: { value: "GR", list: { id: "ISO 3116-1" } },
+              },
+              subentity: {
+                code: { value: "GR-P", list: { id: "ISO 3116-2" } },
+              },
+            },
+          },
         }
       },
       ubl5: {
