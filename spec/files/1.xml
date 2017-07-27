@@ -42,13 +42,15 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
     <cac:PostalAddress>
       <cbc:AddressFormatCode listAgencyID="6" listID="UN/ECE 3477" listVersionID="D08B">5</cbc:AddressFormatCode>
       <cbc:StreetName>Hines Road</cbc:StreetName>
-      <cbc:AdditionalStreetName>Kanata</cbc:AdditionalStreetName>
+      <cbc:AdditionalStreetName>North</cbc:AdditionalStreetName>
       <cbc:BuildingNumber>50</cbc:BuildingNumber>
       <cbc:CityName>Ottawa</cbc:CityName>
       <cbc:PostalZone>K2K 2M5</cbc:PostalZone>
-      <cbc:CountrySubentity>ON</cbc:CountrySubentity>
+        <cbc:CountrySubentityCode listID="ISO 3116-2" listAgencyID="6" listAgencyName="Foo" listName="Country Subentity" listVersionID="20010914">CA-ON</cbc:CountrySubentityCode>
+      <cbc:CountrySubentity>Ontario</cbc:CountrySubentity>
       <cac:Country>
-	<cbc:IdentificationCode>CA</cbc:IdentificationCode>
+        <cbc:IdentificationCode listID="ISO 3116-1" listAgencyID="6" listAgencyName="United Nations Economic Commission for Europe" listName="Country" listVersionID="20010914">CA</cbc:IdentificationCode>
+        <cbc:Name>Canada</cbc:Name>
       </cac:Country>
     </cac:PostalAddress>
     <cac:Contact>
@@ -66,7 +68,7 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
           <cbc:Name>Canada</cbc:Name>
         </cac:Country>
         <cbc:CountrySubentityCode listID="ISO 3116-2" listAgencyID="6" listAgencyName="Another" listName="Country Subentity" listVersionID="20010914">CA-QC</cbc:CountrySubentityCode>
-        <cbc:CountrySubentity>Quebec</cbc:CountrySubentityCode>
+        <cbc:CountrySubentity>Quebec</cbc:CountrySubentity>
       </cac:Address>
     </cac:PhysicalLocation>
   </cac:Party>
@@ -85,7 +87,8 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
       <cbc:BuildingNumber>49</cbc:BuildingNumber>
       <cbc:CityName>Ottawa</cbc:CityName>
       <cbc:PostalZone>K1K2V8</cbc:PostalZone>
-      <cbc:CountrySubentity>ON</cbc:CountrySubentity>
+      <cbc:CountrySubentity>Ontario</cbc:CountrySubentity>
+      <cbc:CountrySubentityCode>CA-ON</cbc:CountrySubentityCode>
       <cac:Country>
 	<cbc:IdentificationCode>CA</cbc:IdentificationCode>
 	<cbc:Name>Canada</cbc:Name>

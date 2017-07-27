@@ -134,14 +134,36 @@ describe XA::UBL::Invoice do
           },
           name: "Xalgorithms Foundation",
           address: {
-            street: {
-              name: "Hines Road",
-              unit: "Kanata"
+            format: {
+              code: {
+                value: '5',
+                version: 'D08B',
+                list: { id: 'UN/ECE 3477' },
+                agency: { id: '6' },
+              },
             },
+            street: ["Hines Road", "North"],
             number: "50",
             zone: "K2K 2M5",
             city: "Ottawa",
-            country_code: "CA"
+            country: {
+              code: {
+                value: 'CA',
+                version: '20010914',
+                list: { id: 'ISO 3116-1', name: 'Country' },
+                agency: { id: '6', name: 'United Nations Economic Commission for Europe' },
+              },
+              name: 'Canada',
+            },
+            subentity: {
+              code: {
+                value: 'CA-ON',
+                version: '20010914',
+                list: { id: 'ISO 3116-2', name: 'Country Subentity' },
+                agency: { id: '6', name: 'Foo' },
+              },
+              name: 'Ontario',
+            },
           },
           location: {
             address: {
@@ -181,14 +203,30 @@ describe XA::UBL::Invoice do
           },
           name: "strangeware",
           address: {
-            street: {
-              name:
-                "Jardin Pvt"
+            format: {
+              code: {
+                value: '5',
+                version: 'D08B',
+                list: { id: 'UN/ECE 3477' },
+                agency: { id: '6' },
+              },
             },
+            street: "Jardin Pvt",
             number: "49",
             zone: "K1K2V8",
             city: "Ottawa",
-            country_code: "CA"
+            country: {
+              code: {
+                value: 'CA',
+              },
+              name: "Canada",
+            },
+            subentity: {
+              code: {
+                value: "CA-ON",
+              },
+              name: "Ontario",
+            },
           },
           location: {
             address: {
@@ -218,14 +256,24 @@ describe XA::UBL::Invoice do
           },
           name: "Xalgorithms Foundation",
           address: {
-            street: {
-              name: "Hines Road",
-              unit: "Kanata"
+            format: {
+              code: {
+                value: '5',
+                version: 'D08B',
+                list: { id: 'UN/ECE 3477' },
+                agency: { id: '6' },
+              },
             },
+            street: "Hines Road",
             number: "50",
             zone: "K2K 2M5",
             city: "Ottawa",
-            country_code: "CA"
+            country: {
+              code: { value: "CA" },
+            },
+            subentity: {
+              name: "ON",
+            },
           },
           person: {
             name: {
@@ -253,13 +301,22 @@ describe XA::UBL::Invoice do
           },
           name: "strangeware",
           address: {
-            street: {
-              name: "Jardin Pvt"
+            format: {
+              code: {
+                value: '5',
+                version: 'D08B',
+                list: { id: 'UN/ECE 3477' },
+                agency: { id: '6' },
+              },
             },
+            street: "Jardin Pvt",
             number: "49",
             zone: "K1K2V8",
             city: "Ottawa",
-            country_code: "CA"
+            country: {
+              code: { value: "CA" },
+            },
+            subentity: { name: "ON" },
           },
           location: {
             address: {

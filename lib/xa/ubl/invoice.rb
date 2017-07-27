@@ -74,7 +74,7 @@ module XA
 
           # skipping DL/ID
           maybe_find_one_convert(
-            :make_address, delivery_el,
+            :make_address_deprecated, delivery_el,
             "#{ns(delivery_el, :cac)}:DeliveryLocation/#{ns(delivery_el, :cac)}:Address") do |address|
             rv[:address] = address
           end
@@ -164,16 +164,34 @@ module XA
         maybe_find_scheme_id(el, "#{ns(el, :cbc)}:ID") do |id|
           rv = { id: id }
         end
-        maybe_find_one_convert(:make_location_address, el, "#{ns(el, :cac)}:Address") do |a|
+        maybe_find_one_convert(:make_address, el, "#{ns(el, :cac)}:Address") do |a|
           rv = (rv || {}).merge({ address: a })
         end
         rv
       end
 
       # DEBT: https://www.pivotaltracker.com/story/show/149463055
-      # new version of make_address - should become standard for all
-      def make_location_address(el)
+      # new version of make_address_deprecated - should become standard for all
+      def make_address(el)
         {}.tap do |o|
+          maybe_find_list_code(el, "#{ns(el, :cbc)}:AddressFormatCode") do |c|
+            o[:format] = { code: c }
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:StreetName") do |text|
+            o[:street] = text
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:AdditionalStreetName") do |text|
+            o[:street] = o.key?(:street) ? [o[:street], text] : text
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:BuildingNumber") do |text|
+            o[:number] = text
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:PostalZone") do |text|
+            o[:zone] = text
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:CityName") do |text|
+            o[:city] = text
+          end
           maybe_find_one_convert(:make_country, el, "#{ns(el, :cac)}:Country") do |c|
             o[:country] = c
           end
@@ -185,7 +203,7 @@ module XA
           end
         end
       end
-
+      
       def make_country(el)
         {}.tap do |o|
           maybe_find_list_code(el, "#{ns(el, :cbc)}:IdentificationCode") do |c|
@@ -243,7 +261,7 @@ module XA
         end
       end
       
-      def make_address(n)
+      def make_address_deprecated(n)
         {}.tap do |o|
           maybe_find_id(n) do |id|
             o[:id] = id
@@ -291,7 +309,7 @@ module XA
           maybe_find_one_text(n, "#{ns(n, :cbc)}:RegistrationName") do |text|
             o[:name] = text
           end
-          maybe_find_one_convert(:make_address, n, "#{ns(n, :cac)}:RegistrationAddress") do |a|
+          maybe_find_one_convert(:make_address_deprecated, n, "#{ns(n, :cac)}:RegistrationAddress") do |a|
             o[:address] = a
           end
         end

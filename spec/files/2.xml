@@ -42,7 +42,6 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
     <cac:PostalAddress>
       <cbc:AddressFormatCode listAgencyID="6" listID="UN/ECE 3477" listVersionID="D08B">5</cbc:AddressFormatCode>
       <cbc:StreetName>Hines Road</cbc:StreetName>
-      <cbc:AdditionalStreetName>Kanata</cbc:AdditionalStreetName>
       <cbc:BuildingNumber>50</cbc:BuildingNumber>
       <cbc:CityName>Ottawa</cbc:CityName>
       <cbc:PostalZone>K2K 2M5</cbc:PostalZone>
