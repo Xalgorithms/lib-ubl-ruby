@@ -36,6 +36,7 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
     <cac:PartyIdentification>
       <cbc:ID schemeID="TS:ID">5a8bb5df-89fb-4360-8f7e-f711ec846204</cbc:ID>
     </cac:PartyIdentification>
+      <cbc:IndustryClassificationCode listID="ISIC" listName="International Standard Industrial Classification" listVersionID="Rev.4">J5820</cbc:IndustryClassificationCode>
     <cac:PartyName>
       <cbc:Name>Xalgorithms Foundation</cbc:Name>
     </cac:PartyName>
@@ -78,6 +79,7 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
     <cac:PartyIdentification>
       <cbc:ID schemeID="TS:ID">9a928370-7ad6-47fb-972a-78888c7be302</cbc:ID>
     </cac:PartyIdentification>
+    <cbc:IndustryClassificationCode listID="ISIC" listName="International Standard Industrial Classification" listVersionID="Rev.4">J6201</cbc:IndustryClassificationCode>
     <cac:PartyName>
       <cbc:Name>strangeware</cbc:Name>
     </cac:PartyName>

@@ -132,6 +132,11 @@ describe XA::UBL::Invoice do
             },
             value: "5a8bb5df-89fb-4360-8f7e-f711ec846204"
           },
+          industry_code: {
+            value: 'J5820',
+            version: 'Rev.4',
+            list: { id: 'ISIC', name: 'International Standard Industrial Classification' },
+          },
           name: "Xalgorithms Foundation",
           address: {
             format: {
@@ -200,6 +205,11 @@ describe XA::UBL::Invoice do
             scheme: {
               id: 'TS:ID',
             }
+          },
+          industry_code: {
+            value: 'J6201',
+            version: 'Rev.4',
+            list: { id: 'ISIC', name: 'International Standard Industrial Classification' },
           },
           name: "strangeware",
           address: {
@@ -337,6 +347,11 @@ describe XA::UBL::Invoice do
               name: 'PBN',
             },
             value: '887603799PG0001',
+          },
+          industry_code: {
+            value: 'G4711',
+            version: 'Rev.4',
+            list: { id: 'ISIC', name: 'International Standard Industrial Classification' },
           },
           location: {
             id: {

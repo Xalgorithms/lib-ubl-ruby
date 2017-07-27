@@ -225,7 +225,7 @@ module XA
             o[:list] = { id: vals['listID'] } if vals.key?('listID')
             o[:list] = o.fetch(:list, {}).merge({ name: vals['listName'] }) if vals.key?('listName')
             o[:agency] = { id: vals['listAgencyID'] } if vals.key?('listAgencyID')
-            o[:agency] = o.fetch(:agency, {}).merge({ name: vals['listAgencyName'] }) if vals.key?('listName')
+            o[:agency] = o.fetch(:agency, {}).merge({ name: vals['listAgencyName'] }) if vals.key?('listAgencyName')
           end
 
           yield(code)
@@ -257,6 +257,9 @@ module XA
           end
           maybe_find_one_convert(:make_person, party_el, "#{ns(party_el, :cac)}:Person") do |person|
             o[:person] = person
+          end
+          maybe_find_list_code(party_el, "#{ns(party_el, :cbc)}:IndustryClassificationCode") do |c|
+            o[:industry_code] = c
           end
         end
       end

@@ -11,6 +11,7 @@ xmlns:cbns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2
       <cans:PartyIdentification>
         <cbns:ID schemeName="PBN">887603799PG0001</cbns:ID>
       </cans:PartyIdentification>
+      <cbns:IndustryClassificationCode listID="ISIC" listName="International Standard Industrial Classification" listVersionID="Rev.4">G4711</cbns:IndustryClassificationCode>
       <cans:PartyName>
         <cbns:Name>l'Essence Chez Bob</cbns:Name>
       </cans:PartyName>
