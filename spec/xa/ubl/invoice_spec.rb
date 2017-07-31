@@ -376,30 +376,76 @@ describe XA::UBL::Invoice do
 
   it 'should read deliveries from the content' do
     expectations = {
-      ubl3: {
-        date: "2016-01-12",
+      ubl1: {
         address: {
-          street: {
-            name: "Rue Metcalfe"
+          format: {
+            code: {
+              value: '5',
+              version: 'D08B',
+              list: { id: 'UN/ECE 3477' },
+              agency: { id: '6' },
+            },
           },
-          number: "2044",
-          zone: "H3A1X7",
-          city: "Montréal",
-          country_code: "CA"
-        }
+          street: "Jardin Pvt",
+          number: "49",
+          zone: "K1K2V8",
+          city: "Ottawa",
+          country: {
+            code: {
+              value: 'CA',
+            },
+            name: "Canada",
+          },
+          subentity: {
+            code: {
+              value: "CA-ON",
+            },
+            name: "Ontario",
+          },
+        },
+      },      
+      ubl3: {
+        date: '2016-01-12',
+        location: {
+          name: "Home",
+          validity: {
+            starts: '2017-07-29',
+            ends: '2017-07-31',
+          },
+          address: {
+            street: "Rue Metcalfe",
+            number: "2044",
+            zone: "H3A1X7",
+            city: "Montréal",
+            subentity: {
+              name: "QC",
+            },
+            country: {
+              code: {
+                value: 'CA',
+              },
+            },
+          },
+        },
       },
       ubl4: {
         date: "2009-12-15",
-        address: {
-          street: {
-            name: "Deliverystreet",
-            unit: "Side door"
+        location: {
+          address: {
+            street: ["Deliverystreet", "Side door"],
+            number: "12",
+            zone: "523427",
+            city: "DeliveryCity",
+            subentity: {
+              name: "RegionC",
+            },
+            country: {
+              code: {
+                value: "BE",
+              },
+            },
           },
-          number: "12",
-          zone: "523427",
-          city: "DeliveryCity",
-          country_code: "BE"
-        }
+        },
       },
     }
 

@@ -108,7 +108,22 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
     </cac:PhysicalLocation>
   </cac:Party>
 </cac:AccountingCustomerParty>
-<cac:Delivery></cac:Delivery>
+<cac:Delivery>
+  <cac:DeliveryAddress>
+    <cbc:AddressFormatCode listAgencyID="6" listID="UN/ECE 3477" listVersionID="D08B">5</cbc:AddressFormatCode>
+    <cbc:StreetName>Jardin Pvt</cbc:StreetName>
+    <cbc:BuildingNumber>49</cbc:BuildingNumber>
+    <cbc:CityName>Ottawa</cbc:CityName>
+    <cbc:PostalZone>K1K2V8</cbc:PostalZone>
+    <cbc:CountrySubentity>Ontario</cbc:CountrySubentity>
+    <cbc:CountrySubentityCode>CA-ON</cbc:CountrySubentityCode>
+    <cac:Country>
+      <cbc:IdentificationCode>CA</cbc:IdentificationCode>
+      <cbc:Name>Canada</cbc:Name>
+    </cac:Country>
+    <cbc:CountrySubentity>Ontario</cbc:CountrySubentity>    
+  </cac:DeliveryAddress>
+</cac:Delivery>
 <cac:PaymentMeans>
   <cbc:ID>e529efbf-823a-45fd-b0a6-c91c02bc53f2</cbc:ID>
   <cbc:PaymentMeansCode listID="urn:tradeshift.com:api:1.0:paymentmeanscode">42</cbc:PaymentMeansCode>

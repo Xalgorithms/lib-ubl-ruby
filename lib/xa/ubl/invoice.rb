@@ -65,25 +65,6 @@ module XA
         end
       end
 
-      def maybe_find_delivery(el, &bl)
-        rv = {}
-        maybe_find_one(el, "#{ns(el, :cac)}:Delivery") do |delivery_el|
-          maybe_find_one_text(delivery_el, "#{ns(el, :cbc)}:ActualDeliveryDate") do |text|
-            rv[:date] = text
-          end
-
-          # skipping DL/ID
-          maybe_find_one_convert(
-            :make_address_deprecated, delivery_el,
-            "#{ns(delivery_el, :cac)}:DeliveryLocation/#{ns(delivery_el, :cac)}:Address") do |address|
-            rv[:address] = address
-          end
-        end
-
-        bl.call(rv) if rv.any? && bl
-        rv
-      end
-
       def maybe_find_id(el, xp = nil, &bl)
         lxp = [xp, "#{ns(el, :cbc)}:ID"].compact.join('/')
         maybe_find_one_convert(:make_id, el, lxp, &bl)
@@ -124,8 +105,8 @@ module XA
             o[:parties] = parties
           end
 
-          maybe_find_delivery(el) do |delivery|
-            o[:delivery] = delivery
+          maybe_find_one_convert(:make_delivery, el, "#{ns(el, :cac)}:Delivery") do |co|
+            o[:delivery] = co
           end
 
           # add PaymentMeans && PaymentTerms (needs looking at spec)
@@ -229,6 +210,45 @@ module XA
           end
 
           yield(code)
+        end
+      end
+
+      def make_delivery(el)
+        {}.tap do |o|
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:ActualDeliveryDate") do |text|
+            o[:date] = text
+          end
+          maybe_find_one_convert(:make_address, el, "#{ns(el, :cac)}:DeliveryAddress") do |co|
+            o[:address] = co
+          end
+          maybe_find_one_convert(:make_delivery_location, el, "#{ns(el, :cac)}:DeliveryLocation") do |co|
+            o[:location] = co
+          end
+        end
+      end
+
+      def make_delivery_location(el)
+        {}.tap do |o|
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:Name") do |text|
+            o[:name] = text
+          end
+          maybe_find_one_convert(:make_delivery_validity, el, "#{ns(el, :cac)}:ValidityPeriod") do |co|
+            o[:validity] = co
+          end          
+          maybe_find_one_convert(:make_address, el, "#{ns(el, :cac)}:Address") do |co|
+            o[:address] = co
+          end
+        end
+      end
+
+      def make_delivery_validity(el)
+        {}.tap do |o|
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:StartDate") do |text|
+            o[:starts] = text
+          end          
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:EndDate") do |text|
+            o[:ends] = text
+          end
         end
       end
       

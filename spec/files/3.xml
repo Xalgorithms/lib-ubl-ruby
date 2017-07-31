@@ -105,6 +105,11 @@
     <cbc:ActualDeliveryDate>2016-01-12</cbc:ActualDeliveryDate>
     <cac:DeliveryLocation>
       <cbc:ID schemeID="GLN" schemeAgencyID="9">11111111</cbc:ID>
+      <cbc:Name>Home</cbc:Name>
+      <cac:ValidityPeriod>
+        <cbc:StartDate>2017-07-29</cbc:StartDate>
+        <cbc:EndDate>2017-07-31</cbc:EndDate>
+      </cac:ValidityPeriod>
       <cac:Address>
 	<cbc:StreetName>Rue Metcalfe</cbc:StreetName>
 	<cbc:BuildingNumber>2044</cbc:BuildingNumber>
