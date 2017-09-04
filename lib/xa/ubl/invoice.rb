@@ -91,7 +91,10 @@ module XA
             o[:customization_id] = text
           end
           maybe_find_one_text(el, "#{ns(el, :cbc)}:IssueDate") do |text|
-            o[:issued] = text
+            o[:issued] = { date: text }
+          end
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:IssueTime") do |text|
+            o[:issued] = o.fetch(:issued, {}).merge(time: text)
           end
           maybe_find_one_text(el, "#{ns(el, :cbc)}:DocumentCurrencyCode") do |text|
             o[:currency] = text

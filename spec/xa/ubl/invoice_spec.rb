@@ -77,26 +77,36 @@ describe XA::UBL::Invoice do
         id: '00012b_EA_TEST',
         version_id: '2.0',
         customization_id: 'urn:tradeshift.com:ubl-2.0-customizations:2010-06',
-        issued: '2016-11-15',
+        issued: {
+          date: '2016-11-15',
+          time: '01:23:04-04:00',
+        },
         currency: 'CAD',
       },
       ubl2: {
         id: '00009',
         version_id: '2.0',
         customization_id: 'urn:tradeshift.com:ubl-2.0-customizations:2010-06',
-        issued: '2016-10-25',
+        issued: {
+          date: '2016-10-25',
+        },
         currency: 'USD',
       },
       ubl3: {
         id: 'FENDER-111111',
         version_id: '2.1',
-        issued: '2016-01-02',
+        issued: {
+          date: '2016-01-02',
+          time: '01:23:46-04:00',
+        },
         currency: 'USD',
       },
       ubl4: {
         id: 'TOSL108',
         version_id: '2.1',
-        issued: '2009-12-15',
+        issued: {
+          date: '2009-12-15',
+        },
         currency: 'EUR',
       },
     }

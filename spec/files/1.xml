@@ -18,6 +18,7 @@ KsXANu2/s6U5ClYd93HoZwzXobKb+2+aMf7KiAg1wHPUcyKx2c5nplgqQ7Hwldk9S9yzaRsYEGWT
 <cbc:ProfileID schemeAgencyID="CEN/ISSS WS/BII" schemeID="CWA 16073:2010" schemeVersionID="1">urn:www.cenbii.eu:profile:bii04:ver1.0</cbc:ProfileID>
 <cbc:ID>00012b_EA_TEST</cbc:ID>
 <cbc:IssueDate>2016-11-15</cbc:IssueDate>
+<cbc:IssueTime>01:23:04-04:00</cbc:IssueTime>
 <cbc:InvoiceTypeCode listAgencyID="6" listID="UN/ECE 1001 Subset" listVersionID="D08B">380</cbc:InvoiceTypeCode>
 <cbc:DocumentCurrencyCode>CAD</cbc:DocumentCurrencyCode>
 <cac:AdditionalDocumentReference>

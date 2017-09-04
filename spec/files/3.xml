@@ -6,6 +6,7 @@
   <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
   <cbc:ID>FENDER-111111</cbc:ID>
   <cbc:IssueDate>2016-01-02</cbc:IssueDate>
+  <cbc:IssueTime>01:23:46-04:00</cbc:IssueTime>
   <cbc:InvoiceTypeCode listID="UN/ECE 1001 Subset" listAgencyID="6">380</cbc:InvoiceTypeCode>
   <cbc:DocumentCurrencyCode listID="ISO 4217 Alpha" listAgencyID="6">USD</cbc:DocumentCurrencyCode>
   <cac:AccountingSupplierParty>
