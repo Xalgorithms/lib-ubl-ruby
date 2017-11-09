@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/karfai/radish.git
+  revision: dce98e784b2b933a2c7288093393d4a63027b523
+  specs:
+    radish (0.0.3)
+
 PATH
   remote: .
   specs:
@@ -48,6 +54,7 @@ DEPENDENCIES
   faker
   fuubar
   pry
+  radish!
   rspec
   xa-ubl!
 
