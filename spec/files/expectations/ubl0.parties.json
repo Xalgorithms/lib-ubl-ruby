@@ -1,22 +1,16 @@
 {
     "supplier" : {
         "id" : {
-            "scheme" : {
-                "id" : "TS:ID"
-            },
-            "value" : "5a8bb5df-89fb-4360-8f7e-f711ec846204"
+            "value" : "5a8bb5df-89fb-4360-8f7e-f711ec846204",
+            "id" : "TS:ID"
         },
         "name" : "Xalgorithms Foundation",
         "address" : {
             "format" : {
                 "value" : "5",
-                "version" : "D08B",
-                "list" : {
-                    "id" : "UN/ECE 3477"
-                },
-                "agency" : {
-                    "id" : "6"
-                }
+                "agency_id" : "6",
+                "list_id" : "UN/ECE 3477",
+                "version_id" : "D08B"
             },
             "street" : ["Hines Road", "North"],
             "number" : "50",
@@ -26,30 +20,22 @@
                 "name" : "Ontario",
                 "code" : {
                     "value" : "CA-ON",
-                    "version" : "20010914",
-                    "list" : {
-                        "id" : "ISO 3116-2",
-                        "name" : "Country Subentity"
-                    },
-                    "agency" : {
-                        "id" : "6",
-                        "name" : "Foo"
-                    }
+                    "agency_id" : "6",
+                    "agency_name" : "Foo",
+                    "list_id" : "ISO 3116-2",
+                    "list_name" : "Country Subentity",
+                    "version_id" : "20010914"
                 }
             },
             "country" : {
                 "name" : "Canada",
                 "code" : {
                     "value" : "CA",
-                    "version" : "20010914",
-                    "list" : {
-                        "id" : "ISO 3116-1",
-                        "name" : "Country"
-                    },
-                    "agency" : {
-                        "id" : "6",
-                        "name" : "United Nations Economic Commission for Europe"
-                    }
+                    "agency_id" : "6",
+                    "agency_name" : "United Nations Economic Commission for Europe",
+                    "list_id" : "ISO 3116-1",
+                    "list_name" : "Country",
+                    "version_id" : "20010914"
                 }
             }
         },
@@ -59,30 +45,22 @@
                     "name" : "Quebec",
                     "code" : {
                         "value" : "CA-QC",
-                        "version" : "20010914",
-                        "list" : {
-                            "id" : "ISO 3116-2",
-                            "name" : "Country Subentity"
-                        },
-                        "agency" : {
-                            "id" : "6",
-                            "name" : "Another"
-                        }
+                        "agency_id" : "6",
+                        "agency_name" : "Another",
+                        "list_id" : "ISO 3116-2",
+                        "list_name" : "Country Subentity",
+                        "version_id" : "20010914"
                     }
                 },
                 "country" : {
                     "name" : "Canada",
                     "code" : {
                         "value" : "CA",
-                        "version" : "20010914",
-                        "list" : {
-                            "id" : "ISO 3116-1",
-                            "name" : "Country"
-                        },
-                        "agency" : {
-                            "id" : "6",
-                            "name" : "United Nations Economic Commission for Europe"
-                        }
+                        "agency_id" : "6",
+                        "agency_name" : "United Nations Economic Commission for Europe",
+                        "list_id" : "ISO 3116-1",
+                        "list_name" : "Country",
+                        "version_id" : "20010914"
                     }
                 }
             }
@@ -90,46 +68,45 @@
         "contact" : {
             "name" : "Joseph Potvin",
             "id" : {
-                "scheme_uri" : "http://tradeshift.com/api/1.0/userId",
-                "value" : "628e5f9f-1ac0-495c-8dd2-6010bcbfa45d"
+                "value" : "628e5f9f-1ac0-495c-8dd2-6010bcbfa45d",
+                "uri" : "http://tradeshift.com/api/1.0/userId"
             }
         },
         "person" : {
             "surname" : "Potvin",
             "names" : ["Joseph"]
-        },
-        "industry" : {
-            "value" : "J5820",
-            "version" : "Rev.4",
-            "list" : {
-                "id" : "ISIC",
-                "name" : "International Standard Industrial Classification"
-            }
         }
+        // "industry" : {
+        //     "value" : "J5820",
+        //     "version" : "Rev.4",
+        //     "list" : {
+        //         "id" : "ISIC",
+        //         "name" : "International Standard Industrial Classification"
+        //     }
+        // }
     },
     "customer" : {
         "id" : {
-            "scheme": "TS:ID",
-            "value" : "9a928370-7ad6-47fb-972a-78888c7be302"
+            "value" : "9a928370-7ad6-47fb-972a-78888c7be302",
+            "id" : "TS:ID"
         },
         "name" : "strangeware",
         "address" : {
             "format" : {
                 "value" : "5",
-                "version" : "D08B",
-                "list" : {
-                    "id" : "UN/ECE 3477"
-                },
-                "agency" : {
-                    "id" : "6"
-                }
+                "agency_id" : "6",
+                "list_id" : "UN/ECE 3477",
+                "version_id" : "D08B"
             },
             "street" : ["Jardin Pvt"],
             "number" : "49",
             "code" : "K1K2V8",
             "city" : "Ottawa",
             "subentity" : {
-                "name" : "Ontario"
+                "name" : "Ontario",
+                "code" : {
+                    "value" : "CA-ON"
+                }
             },
             "country" : {
                 "name" : "Canada",
@@ -143,29 +120,25 @@
                 "subentity" : {
                     "code" : {
                         "value" : "CA-ON",
-                        "list" : {
-                            "id" : "ISO 3116-2"
-                        }
+                        "list_id" : "ISO 3116-2"
                     }
                 },
                 "country" : {
                     "code" : {
                         "value" : "CA",
-                        "version" : "",
-                        "list" : {
-                            "id" : "ISO 3116-1"
-                        }
+                        "list_id" : "ISO 3116-1"
                     }
                 }
             }
         },
-        "industry" : {
-            "value" : "J6201",
-            "version" : "Rev.4",
-            "list" : {
-                "id" : "ISIC",
-                "name" : "International Standard Industrial Classification"
-            }
-        }
+        "contact": {}
+        // "industry" : {
+        //     "value" : "J6201",
+        //     "version" : "Rev.4",
+        //     "list" : {
+        //         "id" : "ISIC",
+        //         "name" : "International Standard Industrial Classification"
+        //     }
+        // }
     }
 }

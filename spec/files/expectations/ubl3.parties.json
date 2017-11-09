@@ -1,9 +1,7 @@
 {
     "supplier" : {
         "id" : {
-            "scheme" : {
-                "id" : "ZZZ"
-            },
+            "id" : "ZZZ",
             "value" : "Supp123"
         },
         "name" : "Salescompany ltd.",
@@ -13,30 +11,30 @@
             "code" : "54321",
             "city" : "Big city",
             "subentity" : {
-                "name" : "RegionA"
+                "code" : {
+                    "value" : "RegionA"
+                }
             },
             "country" : {
                 "code" : {
                     "value" : "DK",
-                    "list" : {
-                        "id" : "ISO3166-1"
-                    },
-                    "agency" : {
-                        "id" : "6"
-                    }
+                    "agency_id" : "6",
+                    "list_id" : "ISO3166-1"
                 }
             }
         },
         "person" : {
             "surname" : "M",
             "names" : ["Antonio", "Salemacher"]
+        },
+        "contact" : {
+            "telephone" : "4621230",
+            "email" : "antonio@salescompany.dk"
         }
     },
     "customer" : {
         "id" : {
-            "scheme" : {
-                "id" : "ZZZ"
-            },
+            "id" : "ZZZ",
             "value" : "345KS5324"
         },
         "name" : "Buyercompany ltd",
@@ -51,28 +49,24 @@
             "country" : {
                 "code" : {
                     "value" : "BE",
-                    "list" : {
-                        "id" : "ISO3166-1"
-                    },
-                    "agency" : {
-                        "id" : "6"
-                    }
+                    "agency_id" : "6",
+                    "list_id" : "ISO3166-1"
                 }
             }
         },
         "person" : {
             "surname" : "X",
             "names" : ["John", "Doe"]
+        },
+        "contact" : {
+            "telephone" : "5121230",
+            "email" : "john@buyercompany.eu"
         }
     },
     "payee" : {
         "id" : {
-            "scheme" : {
-                "id" : "GLN",
-                "agency" : {
-                    "id" : "9"
-                }
-            },
+            "id" : "GLN",
+            "agency_id" : "9",
             "value" : "098740918237"
         },
         "name" : "Ebeneser Scrooge Inc."

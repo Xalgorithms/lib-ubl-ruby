@@ -14,6 +14,12 @@ module XA
         rv
       end
 
+      def maybe_find_list(pn, xps, &bl)
+        rv = xps.map { |xp| pn.xpath(xp) }.compact
+        rv = bl.call(rv) if rv && rv.any? && bl
+        rv
+      end
+
       def maybe_find_set(pn, xp_set, &bl)
         rv = xp_set.keys.inject({}) do |o, k|
           maybe_find_one(pn, xp_set[k]) do |n|
@@ -42,6 +48,14 @@ module XA
         maybe_find_one(pn, xp, attrs) do |n, attrs|
           rv = n.text
           rv = bl.call(rv, attrs) if bl
+          rv
+        end
+      end
+
+      def maybe_find_list_text(pn, xps, &bl)
+        maybe_find_list(pn, xps) do |ns|
+          rv = ns.map(&:text)
+          rv = bl.call(rv) if bl
           rv
         end
       end

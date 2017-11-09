@@ -1,10 +1,8 @@
 {
     "supplier" : {
         "id" : {
-            "scheme" : {
-                "id" : "ZZZ"
-            },
-            "value" : "Supp123"
+            "value" : "Supp123",
+            "id" : "ZZZ"
         },
         "name" : "Fender Guitars Ltd.",
         "address" : {
@@ -19,14 +17,16 @@
                     "value" : "US"
                 }
             }
+        },
+        "contact" : {
+            "telephone" : "480.596.9690",
+            "email" : "consumerrelations@fender.com"
         }
     },
     "customer" : {
         "id" : {
-            "scheme" : {
-                "id" : "ZZZ"
-            },
-            "value": "345KS5324"
+            "value": "345KS5324",
+            "id" : "ZZZ"
         },
         "name" : "Ingólfur Arnarson",
         "address" : {
@@ -35,29 +35,26 @@
             "code" : "105",
             "city" : "REYKJAVÍK",
             "country" : {
-                "name" : "",
                 "code" : {
                     "value" : "IS",
-                    "list" : {
-                        "id" : "ISO3166-1"
-                    },
-                    "agency" : {
-                        "id" : "6"
-                    }
+                    "agency_id" : "6",
+                    "list_id" : "ISO3166-1"
                 }
             }
         },
         "person" : {
             "surname" : "Arnarson",
             "names" : ["Ingólfur"]
+        },
+        "contact" : {
+            "telephone" : "5143334444",
+            "email" : "ingolfer@gmail.com"
         }
     },
     "payee" : {
         "id" : {
-            "scheme" : {
-                "id" : "ZZZ"
-            },
-            "value" : "345KS5324"
+            "value" : "345KS5324",
+            "id" : "ZZZ"
         },
         "name" : "Ingólfur Arnarson",
         "address" : {
@@ -66,21 +63,20 @@
             "code" : "105",
             "city" : "REYKJAVÍK",
             "country" : {
-                "name" : "",
                 "code" : {
                     "value" : "IS",
-                    "list" : {
-                        "id" : "ISO3166-1"
-                    },
-                    "agency" : {
-                        "id" : "6"
-                    }
+                    "agency_id" : "6",
+                    "list_id" : "ISO3166-1"
                 }
             }
         },
         "person" : {
             "surname" : "Arnarson",
             "names" : ["Ingólfur"]
+        },
+        "contact" : {
+            "telephone" : "5143334444",
+            "email" : "ingolfer@gmail.com"
         }
     }
 }
