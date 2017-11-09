@@ -24,6 +24,7 @@ GEM
     i18n (0.8.6)
     method_source (0.8.2)
     mini_portile2 (2.2.0)
+    multi_json (1.12.1)
     nokogiri (1.8.0)
       mini_portile2 (~> 2.2.0)
     pry (0.10.4)
@@ -53,6 +54,7 @@ DEPENDENCIES
   awesome_print
   faker
   fuubar
+  multi_json
   pry
   radish!
   rspec

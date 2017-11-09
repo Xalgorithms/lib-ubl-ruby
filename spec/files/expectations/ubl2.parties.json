@@ -1,0 +1,86 @@
+{
+    "supplier" : {
+        "id" : {
+            "scheme" : {
+                "id" : "ZZZ"
+            },
+            "value" : "Supp123"
+        },
+        "name" : "Fender Guitars Ltd.",
+        "address" : {
+            "street" : ["N. PERIMETER DRIVE", "SUITE 100"],
+            "code" : "85255",
+            "city" : "SCOTTSDALE",
+            "subentity" : {
+                "name" : "AZ"
+            },
+            "country" : {
+                "code" : {
+                    "value" : "US"
+                }
+            }
+        }
+    },
+    "customer" : {
+        "id" : {
+            "scheme" : {
+                "id" : "ZZZ"
+            },
+            "value": "345KS5324"
+        },
+        "name" : "Ingólfur Arnarson",
+        "address" : {
+            "street" : ["Borgartun"],
+            "number" : "34",
+            "code" : "105",
+            "city" : "REYKJAVÍK",
+            "country" : {
+                "name" : "",
+                "code" : {
+                    "value" : "IS",
+                    "list" : {
+                        "id" : "ISO3166-1"
+                    },
+                    "agency" : {
+                        "id" : "6"
+                    }
+                }
+            }
+        },
+        "person" : {
+            "surname" : "Arnarson",
+            "names" : ["Ingólfur"]
+        }
+    },
+    "payee" : {
+        "id" : {
+            "scheme" : {
+                "id" : "ZZZ"
+            },
+            "value" : "345KS5324"
+        },
+        "name" : "Ingólfur Arnarson",
+        "address" : {
+            "street" : ["Borgartun"],
+            "number" : "34",
+            "code" : "105",
+            "city" : "REYKJAVÍK",
+            "country" : {
+                "name" : "",
+                "code" : {
+                    "value" : "IS",
+                    "list" : {
+                        "id" : "ISO3166-1"
+                    },
+                    "agency" : {
+                        "id" : "6"
+                    }
+                }
+            }
+        },
+        "person" : {
+            "surname" : "Arnarson",
+            "names" : ["Ingólfur"]
+        }
+    }
+}
