@@ -1,0 +1,10 @@
+- remove name, language_id from code schema, figure out where they should go
+- contact should be a contact type including a named_identifier, based on 3.xml
+- addresses have an id
+- cbc:EndpointID schemeID="GLN" schemeAgencyID="9">1234567890123</cbc:EndpointID>
+- address has Postbox, Department
+- party has PartyLegalEntity
+- person has job title
+- identifier: _uri need to be embedded in the sub-object
+- version => list { version }
+- Invoice::extract_identifier review attr names in spec
