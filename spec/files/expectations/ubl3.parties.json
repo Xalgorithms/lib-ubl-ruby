@@ -1,0 +1,74 @@
+{
+    "supplier" : {
+        "id" : {
+            "id" : "ZZZ",
+            "value" : "Supp123"
+        },
+        "name" : "Salescompany ltd.",
+        "address" : {
+            "street" : ["Main street", "Suite 123"],
+            "number" : "1",
+            "code" : "54321",
+            "city" : "Big city",
+            "subentity" : {
+                "code" : {
+                    "value" : "RegionA"
+                }
+            },
+            "country" : {
+                "code" : {
+                    "value" : "DK",
+                    "agency_id" : "6",
+                    "list_id" : "ISO3166-1"
+                }
+            }
+        },
+        "person" : {
+            "surname" : "M",
+            "names" : ["Antonio", "Salemacher"]
+        },
+        "contact" : {
+            "telephone" : "4621230",
+            "email" : "antonio@salescompany.dk"
+        }
+    },
+    "customer" : {
+        "id" : {
+            "id" : "ZZZ",
+            "value" : "345KS5324"
+        },
+        "name" : "Buyercompany ltd",
+        "address" : {
+            "street" : ["Anystreet", "Back door"],
+            "number" : "8",
+            "code" : "101",
+            "city" : "Anytown",
+            "subentity" : {
+                "name" : "RegionB"
+            },
+            "country" : {
+                "code" : {
+                    "value" : "BE",
+                    "agency_id" : "6",
+                    "list_id" : "ISO3166-1"
+                }
+            }
+        },
+        "person" : {
+            "surname" : "X",
+            "names" : ["John", "Doe"]
+        },
+        "contact" : {
+            "telephone" : "5121230",
+            "email" : "john@buyercompany.eu"
+        }
+    },
+    "payee" : {
+        "id" : {
+            "id" : "GLN",
+            "agency_id" : "9",
+            "value" : "098740918237"
+        },
+        "name" : "Ebeneser Scrooge Inc."
+    }
+}

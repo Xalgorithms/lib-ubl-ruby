@@ -1,0 +1,82 @@
+{
+    "supplier" : {
+        "id" : {
+            "value" : "Supp123",
+            "id" : "ZZZ"
+        },
+        "name" : "Fender Guitars Ltd.",
+        "address" : {
+            "street" : ["N. PERIMETER DRIVE", "SUITE 100"],
+            "code" : "85255",
+            "city" : "SCOTTSDALE",
+            "subentity" : {
+                "name" : "AZ"
+            },
+            "country" : {
+                "code" : {
+                    "value" : "US"
+                }
+            }
+        },
+        "contact" : {
+            "telephone" : "480.596.9690",
+            "email" : "consumerrelations@fender.com"
+        }
+    },
+    "customer" : {
+        "id" : {
+            "value": "345KS5324",
+            "id" : "ZZZ"
+        },
+        "name" : "Ingólfur Arnarson",
+        "address" : {
+            "street" : ["Borgartun"],
+            "number" : "34",
+            "code" : "105",
+            "city" : "REYKJAVÍK",
+            "country" : {
+                "code" : {
+                    "value" : "IS",
+                    "agency_id" : "6",
+                    "list_id" : "ISO3166-1"
+                }
+            }
+        },
+        "person" : {
+            "surname" : "Arnarson",
+            "names" : ["Ingólfur"]
+        },
+        "contact" : {
+            "telephone" : "5143334444",
+            "email" : "ingolfer@gmail.com"
+        }
+    },
+    "payee" : {
+        "id" : {
+            "value" : "345KS5324",
+            "id" : "ZZZ"
+        },
+        "name" : "Ingólfur Arnarson",
+        "address" : {
+            "street" : ["Borgartun"],
+            "number" : "34",
+            "code" : "105",
+            "city" : "REYKJAVÍK",
+            "country" : {
+                "code" : {
+                    "value" : "IS",
+                    "agency_id" : "6",
+                    "list_id" : "ISO3166-1"
+                }
+            }
+        },
+        "person" : {
+            "surname" : "Arnarson",
+            "names" : ["Ingólfur"]
+        },
+        "contact" : {
+            "telephone" : "5143334444",
+            "email" : "ingolfer@gmail.com"
+        }
+    }
+}

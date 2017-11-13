@@ -1,0 +1,116 @@
+{
+    "supplier" : {
+        "id" : {
+            "value" : "5a8bb5df-89fb-4360-8f7e-f711ec846204",
+            "id" : "TS:ID"
+        },
+        "name" : "Xalgorithms Foundation",
+        "address" : {
+            "format" : {
+                "value" : "5",
+                "agency_id" : "6",
+                "list_id" : "UN/ECE 3477",
+                "version_id" : "D08B"
+            },
+            "street" : ["Hines Road"],
+            "number" : "50",
+            "code" : "K2K 2M5",
+            "city" : "Ottawa",
+            "subentity" : {
+                "name" : "ON"
+            },
+            "country" : {
+                "code" : {
+                    "value" : "CA"
+                }
+            }
+        },
+        "location" : {
+            "address" : {
+                "subentity" : {
+                    "code" : {
+                        "value" : "AR-P",
+                        "list_id" : "ISO 3116-2"
+                    }
+                },
+                "country" : {
+                    "code" : {
+                        "value" : "AR",
+                        "list_id" : "ISO 3116-1"
+                    }
+                }
+            }
+        },
+        "contact" : {
+            "name" : "Joseph Potvin",
+            "id" : {
+                "value" : "628e5f9f-1ac0-495c-8dd2-6010bcbfa45d",
+                "uri" : "http://tradeshift.com/api/1.0/userId"
+            }
+        },
+        "person" : {
+            "surname" : "Potvin",
+            "names" : ["Joseph"]
+        }
+        // "industry" : {
+        //     "value" : "J5820",
+        //     "version" : "Rev.4",
+        //     "list" : {
+        //         "id" : "ISIC",
+        //         "name" : "International Standard Industrial Classification"
+        //     }
+        // }
+    },
+    "customer" : {
+        "id" : {
+            "value" : "9a928370-7ad6-47fb-972a-78888c7be302",
+            "id" : "TS:ID"
+        },
+        "name" : "strangeware",
+        "address" : {
+            "format" : {
+                "value" : "5",
+                "agency_id" : "6",
+                "list_id" : "UN/ECE 3477",
+                "version_id" : "D08B"
+            },
+            "street" : ["Jardin Pvt"],
+            "number" : "49",
+            "code" : "K1K2V8",
+            "city" : "Ottawa",
+            "subentity" : {
+                "name" : "ON"
+            },
+            "country" : {
+                "code" : {
+                    "value" : "CA"
+                }
+            }
+        },
+        "location" : {
+            "address" : {
+                "subentity" : {
+                    "code" : {
+                        "value" : "GR-P",
+                        "list_id" : "ISO 3116-2"
+                    }
+                },
+                "country" : {
+                    "code" : {
+                        "value" : "GR",
+                        "list_id" : "ISO 3116-1"
+                    }
+                }
+            }
+        },
+        "contact" : {}
+    //     "industry" : {
+    //         "value" : "J6201",
+    //         "version" : "Rev.4",
+    //         "list" : {
+    //             "id" : "ISIC",
+    //             "name" : "International Standard Industrial Classification"
+    //         }
+    //     }
+    }
+}

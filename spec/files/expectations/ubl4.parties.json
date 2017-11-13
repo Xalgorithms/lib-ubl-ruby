@@ -1,0 +1,28 @@
+{
+    "supplier" : {
+        "id" : {
+            "value" : "887603799PG0001",
+            "name" : "PBN"
+        },
+        "name" : "l'Essence Chez Bob",
+        "location" : {
+            "id" : {
+                "value" : "87Q6C47F+J7",
+                "uri" : "http://openlocationcode.org"
+            }
+        }
+        // "industry" : {
+        //     "value" : "G4711",
+        //     "version" : "Rev.4",
+        //     "list" : {
+        //         "id" : "ISIC",
+        //         "name" : "International Standard Industrial Classification"
+        //     }
+        // }
+    },
+    "customer" : {
+        "id" : {
+            "value" : "Cash"
+        }
+    }
+}
