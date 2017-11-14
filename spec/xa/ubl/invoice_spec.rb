@@ -158,7 +158,6 @@ describe XA::UBL::Invoice do
 
     it 'and set parties' do
       with_expectations_from_files('parties') do |invoice, ex, k|
-        p [:ubl, k]
         expect(ex).to_not be_empty
         ex.each do |k, v|
           expect(get(invoice, "envelope.parties.#{k}")).to eql(v)
