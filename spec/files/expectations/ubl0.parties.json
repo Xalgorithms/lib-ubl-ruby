@@ -75,15 +75,13 @@
         "person" : {
             "surname" : "Potvin",
             "names" : ["Joseph"]
+        },
+        "industry" : {
+            "value" : "J5820",
+            "list_id" : "ISIC",
+            "list_name" : "International Standard Industrial Classification",
+            "version_id" : "Rev.4"
         }
-        // "industry" : {
-        //     "value" : "J5820",
-        //     "version" : "Rev.4",
-        //     "list" : {
-        //         "id" : "ISIC",
-        //         "name" : "International Standard Industrial Classification"
-        //     }
-        // }
     },
     "customer" : {
         "id" : {
@@ -131,14 +129,12 @@
                 }
             }
         },
-        "contact": {}
-        // "industry" : {
-        //     "value" : "J6201",
-        //     "version" : "Rev.4",
-        //     "list" : {
-        //         "id" : "ISIC",
-        //         "name" : "International Standard Industrial Classification"
-        //     }
-        // }
+        "contact": {},
+        "industry" : {
+            "value" : "J6201",
+            "list_id" : "ISIC",
+            "list_name" : "International Standard Industrial Classification",
+            "version_id" : "Rev.4"
+        }
     }
 }

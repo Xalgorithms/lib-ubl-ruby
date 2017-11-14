@@ -232,6 +232,10 @@ module XA
           maybe_find_one(el, "#{ns(el, :cac)}:Contact") do |el|
             o['contact'] = extract_contact(el)
           end
+
+          maybe_find_code(el, "#{ns(el, :cbc)}:IndustryClassificationCode") do |code|
+            o['industry'] = code
+          end
         end
       end
 
