@@ -43,6 +43,7 @@ module XA
       def make_invoice(el)
         {}.tap do |o|
           o['envelope'] = extract_envelope(el)
+          o['items'] = extract_items(el)
         end
       end
 
@@ -77,7 +78,30 @@ module XA
         end
       end
       
+      def extract_items(el)
+        maybe_find_many_convert(:extract_item, el, "#{ns(el, :cac)}:InvoiceLine")
+      end
 
+      def extract_item(el)
+        {}.tap do |o|
+          maybe_find_identifier(el, '.') do |id|
+            o['id'] = id
+          end
+          maybe_find_amount(el, "#{ns(el, :cbc)}:LineExtensionAmount") do |price|
+            o['total_price'] = price
+          end
+          maybe_find_amount(el, "#{ns(el, :cac)}:ItemPriceExtension/#{ns(el, :cbc)}:Amount") do |price|
+            o['price'] = price
+          end
+          maybe_find_quantity(el, "#{ns(el, :cbc)}:InvoicedQuantity") do |quantity|
+            o['quantity'] = quantity
+          end
+          maybe_find_pricing(el, "#{ns(el, :cac)}:Price") do |pricing|
+            o['pricing'] = pricing
+          end
+        end
+      end
+      
       def maybe_find_parties(el)
         parties_set = {
           'supplier' => "#{ns(el, :cac)}:AccountingSupplierParty/#{ns(el, :cac)}:Party",
@@ -127,13 +151,19 @@ module XA
             'listVersionID'  => 'version_id',
             'name'           => 'name',
           }
-          maybe_find_one_text(el, "#{ns(el, :cbc)}:ID", attrs_kmap.keys) do |text, vals|
-            o.merge!({ 'value' => text }.merge(transpose_keys(attrs_kmap, vals)))
+          maybe_find_text_with_mapped_attrs(el, "#{ns(el, :cbc)}:ID", attrs_kmap) do |vals|
+            o.merge!(vals)
           end
         end
       end
+
+      def maybe_find_text_with_mapped_attrs(el, xp, attrs_kmap)
+        maybe_find_one_text(el, xp, attrs_kmap.keys) do |text, vals|
+          yield({ 'value' => text }.merge(transpose_keys(attrs_kmap, vals)))
+        end        
+      end
       
-      def maybe_find_code(el, xp)
+      def maybe_find_code(el, xp, &bl)
         # code has attrs:
         # languageID, listAgencyID, listAgencyName, listID, listName, listSchemeURI, listURI, listVersionID, listVersionID
         # and a value that should become:
@@ -149,9 +179,7 @@ module XA
           'listVersionID'  => 'version_id',
           'name'           => 'name',
         }
-        maybe_find_one_text(el, xp, attrs_kmap.keys) do |text, vals|
-          yield({ 'value' => text }.merge(transpose_keys(attrs_kmap, vals)))
-        end
+        maybe_find_text_with_mapped_attrs(el, xp, attrs_kmap, &bl)
       end
 
       def maybe_find_country(pel)
@@ -170,6 +198,40 @@ module XA
           end
         end
         yield(yv) if yv.any?
+      end
+
+      def maybe_find_amount(el, xp, &bl)
+        attrs_kmap = {
+          'currencyID' => 'currency_code',
+        }
+        
+        maybe_find_text_with_mapped_attrs(el, xp, attrs_kmap, &bl)
+      end
+
+      def maybe_find_quantity(el, xp, &bl)
+        attrs_kmap = {
+          'unitCode' => 'unit',
+        }
+        
+        maybe_find_text_with_mapped_attrs(el, xp, attrs_kmap, &bl)
+      end
+
+      def maybe_find_pricing(pel, xp)
+        o = {}
+
+        maybe_find_one(pel, xp) do |el|
+          maybe_find_one_text(el, "#{ns(el, :cbc)}:OrderableUnitFactorRate") do |text|
+            o['orderable_factor'] = text
+          end
+          maybe_find_amount(el, "#{ns(el, :cbc)}:PriceAmount") do |price|
+            o['price'] = price
+          end
+          maybe_find_quantity(el, "#{ns(el, :cbc)}:BaseQuantity") do |quantity|
+            o['quantity'] = quantity
+          end
+        end
+        
+        yield(o) if o.any?
       end
 
       def extract_document_ids(el)
@@ -201,8 +263,8 @@ module XA
             'schemeURI'        => 'uri',
             'schemeName'       => 'name',
           }
-          maybe_find_one_text(el, "#{ns(el, :cbc)}:ID", attrs_kmap.keys) do |text, vals|
-            o.merge!({ 'value' => text }.merge(transpose_keys(attrs_kmap, vals)))
+          maybe_find_text_with_mapped_attrs(el, "#{ns(el, :cbc)}:ID", attrs_kmap) do |vals|
+            o.merge!(vals)
           end
         end
       end

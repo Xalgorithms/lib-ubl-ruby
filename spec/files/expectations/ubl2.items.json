@@ -1,0 +1,21 @@
+[
+    {
+        "id" : {
+            "value" : "1"
+        },
+        "quantity" : {
+            "value" : "1",
+            "unit" : "C62"
+        },
+        "pricing" : {
+            "price" : {
+                "value" : "600",
+                "currency_code" : "USD"
+            },
+            "quantity" : {
+                "value" : "1",
+                "unit" : "C62"
+            }
+        }
+    }
+]
