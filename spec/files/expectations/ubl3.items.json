@@ -1,0 +1,117 @@
+[
+    {
+        "id" : {
+            "value" : "1"
+        },
+        "total_price" : {
+            "value" : "1273",
+            "currency_code" : "EUR"
+        },
+        "quantity" : {
+            "value" : "1",
+            "unit" : "C62"
+        },
+        "pricing" : {
+            "price" : {
+                "value" : "1273",
+                "currency_code" : "EUR"
+            },
+            "quantity" : {
+                "value" : "1",
+                "unit" : "C62"
+            }
+        }
+    },
+    {
+        "id" : {
+            "value" : "2"
+        },
+        "total_price" : {
+            "value" : "-3.96",
+            "currency_code" : "EUR"
+        },
+        "quantity" : {
+            "value" : "-1",
+            "unit" : "C62"
+        },
+        "pricing" : {
+            "price" : {
+                "value" : "3.96",
+                "currency_code" : "EUR"
+            },
+            "quantity" : {
+                "value" : "1",
+                "unit" : "C62"
+            }
+        }
+    },
+    {
+        "id" : {
+            "value" : "3"
+        },
+        "total_price" : {
+            "value" : "4.96",
+            "currency_code" : "EUR"
+        },
+        "quantity" : {
+            "value" : "2",
+            "unit" : "C62"
+        },
+        "pricing" : {
+            "price" : {
+                "value" : "2.48",
+                "currency_code" : "EUR"
+            },
+            "quantity" : {
+                "value" : "1",
+                "unit" : "C62"
+            }
+        }
+    },
+    {
+        "id" : {
+            "value" : "4"
+        },
+        "total_price" : {
+            "value" : "-25",
+            "currency_code" : "EUR"
+        },
+        "quantity" : {
+            "value" : "-1",
+            "unit" : "C62"
+        },
+        "pricing" : {
+            "price" : {
+                "value" : "25",
+                "currency_code" : "EUR"
+            },
+            "quantity" : {
+                "value" : "1",
+                "unit" : "C62"
+            }
+        }
+    },
+    {
+        "id" : {
+            "value" : "5"
+        },
+        "total_price" : {
+            "value" : "187.5",
+            "currency_code" : "EUR"
+        },
+        "quantity" : {
+            "value" : "250",
+            "unit" : "C62"
+        },
+        "pricing" : {
+            "price" : {
+                "value" : "0.75",
+                "currency_code" : "EUR"
+            },
+            "quantity" : {
+                "value" : "1",
+                "unit" : "C62"
+            }
+        }
+    }
+]

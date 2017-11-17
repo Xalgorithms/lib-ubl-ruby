@@ -1,0 +1,26 @@
+[
+    {
+        "id" : {
+            "value" : "1"
+        },
+        "total_price" : {
+            "value" : "500.00",
+            "currency_code" : "CAD"
+        },
+        "quantity" : {
+            "value" : "100",
+            "unit" : "EA"
+        },
+        "pricing" : {
+            "orderable_factor" : "1.000000000000",
+            "price" : {
+                "value" : "5.00",
+                "currency_code" : "CAD"
+            },
+            "quantity" : {
+                "value" : "1",
+                "unit" : "EA"
+            }
+        }
+    }
+]

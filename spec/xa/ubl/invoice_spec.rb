@@ -165,6 +165,19 @@ describe XA::UBL::Invoice do
       end
     end
   end
+
+  it 'should parse line items' do
+      with_expectations_from_files('items') do |invoice, ex, k|
+        # check each item individually to make debugging easier
+        p [:ubl, k]
+        items = get(invoice, 'items', [])
+
+        expect(items.length).to eql(ex.length)
+        items.each_with_index do |it, i|
+          expect(it).to eql(ex[i])
+        end
+      end
+  end
   
   # it 'should read deliveries from the content' do
   #   expectations = {
@@ -242,121 +255,6 @@ describe XA::UBL::Invoice do
   #   }
 
   #   with_expectations_match(expectations, :delivery)
-  # end
-
-  # it 'should read item lines from the content' do
-  #   expectations = {
-  #     ubl2: [
-  #       {
-  #         id: '1',
-  #         price: { value: 500.0, currency: 'CAD' },
-  #         quantity: { value: 100, code: 'EA' },
-  #         item: {
-  #           description: { text: "Services - test description field" },
-  #           name: "Services - test description field",
-  #           ids: {
-  #             seller: { value: "1234", scheme: "GTIN", agency: "9" }
-  #           },
-  #         },
-  #         pricing: {
-  #           price: { value: 5.0, currency: 'CAD' },
-  #           quantity: { value: 1, code: 'EA' },
-  #         },
-  #         orderable_factor: 1.0,
-  #         tax: {
-  #           total: { value: 65.0, currency: 'CAD' },
-  #           components: [
-  #             {
-  #               amount: { value: 65.0, currency: 'CAD' },
-  #               taxable: { value: 500.0, currency: 'CAD' },
-  #               categories: [
-  #                 {
-  #                   id: { value: 'S', agency_id: '6', scheme_id: 'UN/ECE 5305', version_id: 'D08B', },
-  #                   percent: 13.0,
-  #                   scheme: {
-  #                     id: { value: 'AAG', agency_id: '6', scheme_id: 'UN/ECE 5153 Subset', version_id: 'D08B', },
-  #                     name: 'CA ON HST 13%',
-  #                     jurisdiction: {
-  #                       format: { agency_id: '6', id: 'UN/ECE 3477', version_id: 'D08B', value: '5' },
-  #                       district: 'ON',
-  #                     },
-  #                   },
-  #                 },
-  #               ],
-  #             },
-  #           ],
-  #         },
-  #       },
-  #     ],
-  #     ubl3: [
-  #       {
-  #         id: '1',
-  #         quantity: { value: 1, code: 'C62' },
-  #         item: {
-  #           description: {
-  #             text: "Features include a maple neck with vintage-tint gloss finish, 9.5”-radius rosewood fingerboard with 22 medium jumbo frets and parchment dot inlays, tortoiseshell (Three-Color Sunburst and Olympic White models) and white-black-white pickguards (Candy Apple Red and Surf Green models), Jaguar single-coil pickups, circuit selector and tone circuit switches, pickup on/off switches, skirted black control knobs (lead circuit) and black disc knobs (rhythm circuit), vintage-style bridge and non-locking floating vibrato with vintage-style tremolo arm, vintage-style chrome tuners and chrome hardware.",
-  #             language: "EN"
-  #           },
-  #           name: "VINTAGE MODIFIED JAGUAR",
-  #           ids: {
-  #             seller: { value: "0302000500" },
-  #             standard: { value: "111111", scheme: "GTIN", agency: "9" },
-  #           },
-  #           classifications: [
-  #             { value: "60131303", agency: "113", id: "UNSPSC" },
-  #           ],
-  #         },
-  #         pricing: {
-  #           price: { value: 600.0, currency: 'USD' },
-  #           quantity: { value: 1, code: 'C62' },
-  #         },
-  #       },
-  #     ],
-  #   }
-
-  #   with_expectations_match(expectations, :lines)
-  # end
-
-  # it 'should read totals from the content' do
-  #   expectations = {
-  #     ubl1: {
-  #       totals: {
-  #         total: { value: 3000.0, currency: 'CAD' },
-  #         tax_exclusive: { value: 390.0, currency: 'CAD' },
-  #         tax_inclusive: { value: 3390.0, currency: 'CAD' },
-  #         payable: { value: 3390.0, currency: 'CAD' },
-  #       },
-  #     },
-  #     ubl2: {
-  #       totals: {
-  #         total: { value: 500.0, currency: 'CAD' },
-  #         tax_exclusive: { value: 65.0, currency: 'CAD' },
-  #         tax_inclusive: { value: 565.0, currency: 'CAD' },
-  #         payable: { value: 565.0, currency: 'CAD' },
-  #       },
-  #     },
-  #     ubl3: {
-  #       totals: nil,
-  #     },
-  #     ubl4: {
-  #       totals: {
-  #         total: { value: 1436.5, currency: 'EUR' },
-  #         tax_exclusive: { value: 1436.5, currency: 'EUR' },
-  #         tax_inclusive: { value: 1729.0, currency: 'EUR' },
-  #         allowance: { value: 100.0, currency: 'EUR' },
-  #         charge: { value: 100.0, currency: 'EUR' },
-  #         prepaid: { value: 1000.0, currency: 'EUR' },
-  #         rounding: { value: 0.3, currency: 'EUR' },
-  #         payable: { value: 729.0, currency: 'EUR' },
-  #       },
-  #     },
-  #   }
-
-  #   with_expectations(expectations) do |invoice, ex|
-  #     ex.keys.each do |k|
-  #       expect(invoice[k]).to eql(ex[k])
-  #     end
-  #   end
   # end
 end
 
