@@ -1,0 +1,20 @@
+{
+  "supplier" : {
+    "name" : "ASP"
+  },
+  "customer" : {
+    "name" : "ACP"
+  },
+  "payee" : {
+    "name" : "PP"
+  },
+  "buyer" : {
+    "name" : "BCP"
+  },
+  "seller" : {
+    "name" : "SSP"
+  },
+  "tax" : {
+    "name" : "TRP"
+  }
+}

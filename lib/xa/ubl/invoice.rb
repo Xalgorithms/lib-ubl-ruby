@@ -107,6 +107,9 @@ module XA
           'supplier' => "#{ns(el, :cac)}:AccountingSupplierParty/#{ns(el, :cac)}:Party",
           'customer' => "#{ns(el, :cac)}:AccountingCustomerParty/#{ns(el, :cac)}:Party",
           'payee'    => "#{ns(el, :cac)}:PayeeParty",
+          'buyer'    => "#{ns(el, :cac)}:BuyerCustomerParty/#{ns(el, :cac)}:Party",
+          'seller'   => "#{ns(el, :cac)}:SellerSupplierParty/#{ns(el, :cac)}:Party",
+          'tax'      => "#{ns(el, :cac)}:TaxRepresentativeParty",
         }
         maybe_find_set(el, parties_set) do |vals|
           yield(vals.inject({}) do |parties, (k, el)|
