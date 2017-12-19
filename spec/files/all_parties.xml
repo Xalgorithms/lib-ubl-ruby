@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--2017-05-14 11:30z GasTaxExample input values-->
+<inns:Invoice 
+    xmlns:inns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+    xmlns:cans="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+    xmlns:cbns="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2">
+  <cbns:ID>1234</cbns:ID>
+  <cbns:IssueDate>2017-05-12</cbns:IssueDate>
+  <cans:AccountingSupplierParty>
+    <cans:Party>
+      <cans:PartyName>
+        <cbns:Name>ASP</cbns:Name>
+      </cans:PartyName>
+    </cans:Party>
+  </cans:AccountingSupplierParty>
+  <cans:AccountingCustomerParty>
+    <cans:Party>
+      <cans:PartyName>
+        <cbns:Name>ACP</cbns:Name>
+      </cans:PartyName>
+    </cans:Party>
+  </cans:AccountingCustomerParty>
+  <cans:PayeeParty>
+    <cans:PartyName>
+      <cbns:Name>PP</cbns:Name>
+    </cans:PartyName>
+  </cans:PayeeParty>
+  <cans:BuyerCustomerParty>
+    <cans:Party>
+      <cans:PartyName>
+        <cbns:Name>BCP</cbns:Name>
+      </cans:PartyName>
+    </cans:Party>
+  </cans:BuyerCustomerParty>
+  <cans:SellerSupplierParty>
+    <cans:Party>
+      <cans:PartyName>
+        <cbns:Name>SSP</cbns:Name>
+      </cans:PartyName>
+    </cans:Party>
+  </cans:SellerSupplierParty>
+  <cans:TaxRepresentativeParty>
+    <cans:PartyName>
+      <cbns:Name>TRP</cbns:Name>
+    </cans:PartyName>
+  </cans:TaxRepresentativeParty>
+  <cans:InvoiceLine>
+    <cbns:ID>1</cbns:ID>
+    <cbns:InvoicedQuantity unitCode="LTR">10</cbns:InvoicedQuantity>
+    <cbns:LineExtensionAmount currencyID="CAD">10.00</cbns:LineExtensionAmount>
+  </cans:InvoiceLine>
+</inns:Invoice>

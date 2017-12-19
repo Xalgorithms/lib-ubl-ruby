@@ -1,0 +1,13 @@
+[
+  {
+    "id":{"value":"1"},
+    "total_price":{
+      "value":"10.00",
+      "currency_code":"CAD"
+    },
+    "quantity":{
+      "value":"10",
+      "unit":"LTR"
+    }
+  }
+]

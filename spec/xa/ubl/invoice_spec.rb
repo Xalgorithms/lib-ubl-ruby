@@ -45,6 +45,7 @@ describe XA::UBL::Invoice do
       ubl2: IO.read('spec/files/3.xml'),
       ubl3: IO.read('spec/files/4.xml'),
       ubl4: IO.read('spec/files/gas_tax_example.xml'),
+      ubl5: IO.read('spec/files/all_parties.xml'),
     }
   end
   
@@ -169,7 +170,6 @@ describe XA::UBL::Invoice do
   it 'should parse line items' do
       with_expectations_from_files('items') do |invoice, ex, k|
         # check each item individually to make debugging easier
-        p [:ubl, k]
         items = get(invoice, 'items', [])
 
         expect(items.length).to eql(ex.length)
