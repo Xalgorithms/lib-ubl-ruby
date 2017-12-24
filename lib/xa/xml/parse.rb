@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 module XA
   module XML
     module Parse
