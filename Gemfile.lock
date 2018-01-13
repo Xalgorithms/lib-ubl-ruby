@@ -8,7 +8,7 @@ GIT
 PATH
   remote: .
   specs:
-    xa-ubl (0.0.7)
+    xa-ubl (0.0.8)
       activesupport
       nokogiri
 
