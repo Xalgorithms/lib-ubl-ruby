@@ -8,6 +8,7 @@ Gem::Specification.new do |s|
   s.summary     = "XA UBL"
   s.description = "Shared gem for parsing UBL"
 
+  s.add_dependency 'activesupport'
   s.add_dependency 'nokogiri'
 
   s.add_development_dependency 'rspec'

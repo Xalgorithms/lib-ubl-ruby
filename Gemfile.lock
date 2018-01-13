@@ -8,12 +8,18 @@ GIT
 PATH
   remote: .
   specs:
-    xa-ubl (0.0.6)
+    xa-ubl (0.0.7)
+      activesupport
       nokogiri
 
 GEM
   remote: https://rubygems.org/
   specs:
+    activesupport (5.1.4)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
+      i18n (~> 0.7)
+      minitest (~> 5.1)
+      tzinfo (~> 1.1)
     awesome_print (1.8.0)
     coderay (1.1.2)
     concurrent-ruby (1.0.5)
@@ -27,6 +33,7 @@ GEM
       concurrent-ruby (~> 1.0)
     method_source (0.9.0)
     mini_portile2 (2.3.0)
+    minitest (5.11.1)
     multi_json (1.12.2)
     nokogiri (1.8.1)
       mini_portile2 (~> 2.3.0)
@@ -47,6 +54,9 @@ GEM
       rspec-support (~> 3.7.0)
     rspec-support (3.7.0)
     ruby-progressbar (1.9.0)
+    thread_safe (0.3.6)
+    tzinfo (1.2.4)
+      thread_safe (~> 0.1)
 
 PLATFORMS
   ruby
