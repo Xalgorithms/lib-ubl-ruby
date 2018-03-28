@@ -1,21 +1,25 @@
 [
-    {
-        "id" : {
-            "value" : "1"
-        },
-        "quantity" : {
-            "value" : "1",
-            "unit" : "C62"
-        },
-        "pricing" : {
-            "price" : {
-                "value" : "600",
-                "currency_code" : "USD"
-            },
-            "quantity" : {
-                "value" : "1",
-                "unit" : "C62"
-            }
-        }
+  {
+    "id" : {
+      "value" : "1"
+    },
+    "description" : "Features include a maple neck with vintage-tint gloss finish, 9.5”-radius rosewood fingerboard with 22 medium jumbo frets and parchment dot inlays, tortoiseshell (Three-Color Sunburst and Olympic White models) and white-black-white pickguards (Candy Apple Red and Surf Green models), Jaguar single-coil pickups, circuit selector and tone circuit switches, pickup on/off switches, skirted black control knobs (lead circuit) and black disc knobs (rhythm circuit), vintage-style bridge and non-locking floating vibrato with vintage-style tremolo arm, vintage-style chrome tuners and chrome hardware.",
+    "classification" : {
+      "value" : "60131303", "agency_id": "113", "list_id" : "UNSPSC"
+    },
+    "quantity" : {
+      "value" : "1",
+      "unit" : "C62"
+    },
+    "pricing" : {
+      "price" : {
+        "value" : "600",
+        "currency_code" : "USD"
+      },
+      "quantity" : {
+        "value" : "1",
+        "unit" : "C62"
+      }
     }
+  }
 ]

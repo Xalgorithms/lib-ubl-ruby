@@ -1,26 +1,27 @@
 [
-    {
-        "id" : {
-            "value" : "1"
-        },
-        "total_price" : {
-            "value" : "3000.00",
-            "currency_code" : "CAD"
-        },
-        "quantity" : {
-            "value" : "6000",
-            "unit" : "EA"
-        },
-        "pricing" : {
-            "orderable_factor" : "0.000500000000",
-            "price" : {
-                "value" : "1000.00",
-                "currency_code" : "CAD"
-            },
-            "quantity" : {
-                "value" : "2000",
-                "unit" : "EA"
-            }
-        }
+  {
+    "id" : {
+      "value" : "1"
+    },
+    "description" : "Test description",
+    "total_price" : {
+      "value" : "3000.00",
+      "currency_code" : "CAD"
+    },
+    "quantity" : {
+      "value" : "6000",
+      "unit" : "EA"
+    },
+    "pricing" : {
+      "orderable_factor" : "0.000500000000",
+      "price" : {
+        "value" : "1000.00",
+        "currency_code" : "CAD"
+      },
+      "quantity" : {
+        "value" : "2000",
+        "unit" : "EA"
+      }
     }
+  }
 ]
